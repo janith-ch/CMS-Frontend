@@ -1,23 +1,22 @@
-import React from 'react';
-import '../App.css'
-import Footer from "../components/Footer";
-import HeroSection from "../components/HeroSection";
+/** @format */
 
+import React from "react";
+import "../app/App.css";
+import Footer from "../components/home/Footer";
+import HeroSection from "../components/home/HeroSection";
 
 function Home() {
-    return (
-        <>
-            <HeroSection/>
-            {/*<Description1/>*/}
-            {/*<ProductList/>*/}
-            {/*<History/>*/}
-            {/*<Cards/>*/}
+  return (
+    <>
+      <HeroSection />
+      {/*<Description1/>*/}
+      {/*<ProductList/>*/}
+      {/*<History/>*/}
+      {/*<Cards/>*/}
 
-            <Footer/>
-        </>
-
-    );
-
+      <Footer />
+    </>
+  );
 }
 
 export default Home;
