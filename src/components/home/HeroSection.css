@@ -9,7 +9,7 @@ video {
 }
 
 .hero-container {
-    background: url('/src/assets/hero.jpg') center center/cover no-repeat;
+    background: url('/src/assets/Images/hero.jpg') center center/cover no-repeat;
     filter: invert(0.1);
     height: 100vh;
     width: 100%;

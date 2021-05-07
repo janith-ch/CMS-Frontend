@@ -62,11 +62,11 @@ function Navbar() {
 
                         <li className='nav-item'>
                             <Link
-                                to='/products'
+                                to='/Admin'
                                 className='nav-links'
                                 onClick={closeMobileMenu}
                             >
-                                Special Sessions
+                                Admin
                             </Link>
                         </li>
 
