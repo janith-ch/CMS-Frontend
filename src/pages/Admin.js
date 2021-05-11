@@ -21,7 +21,6 @@ function Admin() {
             <br></br>
             <br></br>
             <br></br>
-
             <Routes />
           </Col>
           <Col md="1"></Col>

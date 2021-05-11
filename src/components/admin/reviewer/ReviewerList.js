@@ -1,6 +1,7 @@
 /** @format */
 
 import React, { Component } from "react";
+import "bootstrap/dist/css/bootstrap.css";
 class ReviewerList extends Component {
   state = {};
   render() {
@@ -15,8 +16,6 @@ class ReviewerList extends Component {
               <th>Duration</th>
               <th>Date</th>
               <th>Action</th>
-
-              <button type="button">Add Reviewer</button>
             </tr>
           </thead>
           <tbody></tbody>

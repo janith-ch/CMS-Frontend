@@ -7,8 +7,8 @@ import Dashboard from "../components/admin/dashboard/Dashboard";
 const Routes = () => {
   return (
     <>
-      <Route path="/dashboard" exact component={Dashboard} />
-      <Route path="/reviewerList" component={ReviewerList} />
+      <Route path="/admin/dashboard" component={Dashboard} />
+      <Route path="/admin/reviewer-list" component={ReviewerList} />
     </>
   );
 };
