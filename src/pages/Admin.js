@@ -6,7 +6,6 @@ import { BrowserRouter as Router } from "react-router-dom";
 import "../app/App.css";
 import SideBar from "../components/admin/sidebar/SideBar";
 import Routes from "../routes/admin";
-
 import { Col } from "react-bootstrap";
 
 function Admin() {
