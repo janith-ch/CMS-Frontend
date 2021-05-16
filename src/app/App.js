@@ -5,7 +5,7 @@ import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Home from "../pages/Home";
 import Admin from "../pages/Admin";
-import "bootstrap/dist/css/bootstrap.css";
+//import "bootstrap/dist/css/bootstrap.css";
 
 function App() {
   return (

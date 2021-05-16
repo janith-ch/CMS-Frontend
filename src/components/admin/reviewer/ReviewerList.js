@@ -52,8 +52,8 @@ class ReviewerList extends Component {
   deleteAlert = (id) => {
     const swalWithBootstrapButtons = Swal.mixin({
       customClass: {
-        confirmButton: "btn btn-success",
-        cancelButton: "btn btn-danger",
+        confirmButton: "btn btn-success m-2",
+        cancelButton: "btn btn-danger m-2",
       },
       buttonsStyling: false,
     });
@@ -64,8 +64,8 @@ class ReviewerList extends Component {
         text: "Do you want to remove this!",
         icon: "warning",
         showCancelButton: true,
-        confirmButtonText: "Yes",
-        cancelButtonText: "No",
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel!",
         reverseButtons: true,
       })
       .then((result) => {
@@ -73,7 +73,7 @@ class ReviewerList extends Component {
           this.removeUser(id);
           swalWithBootstrapButtons.fire(
             "Deleted!",
-            "Your file has been deleted.",
+            "User has been removed.",
             "success"
           );
         } else if (
@@ -82,7 +82,7 @@ class ReviewerList extends Component {
         ) {
           swalWithBootstrapButtons.fire(
             "Cancelled",
-            "Your imaginary file is safe :)",
+            "User not removed :)",
             "error"
           );
         }
