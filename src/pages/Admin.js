@@ -14,6 +14,8 @@ function Admin() {
       <Router>
         <Row>
           <Col md="3">
+            <br></br>
+            <br></br>
             <SideBar />
           </Col>
           <Col md="8">

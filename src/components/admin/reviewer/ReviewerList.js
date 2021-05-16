@@ -2,8 +2,13 @@
 
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
-import { Col, Button, Row, Table } from "react-bootstrap";
-import { getUserList } from "../../../service/User";
+import Swal from "sweetalert2";
+import "../../../../node_modules/datatables.net-dt/css/jquery.dataTables.css";
+import { Col, Button, Row } from "react-bootstrap";
+import { getUserList, deleteUser } from "../../../service/User";
+const $ = require("jquery");
+$.DataTable = require("datatables.net");
+
 class ReviewerList extends Component {
   state = { users: [] };
 
@@ -21,16 +26,72 @@ class ReviewerList extends Component {
     }
   };
 
+  removeUser = async (id) => {
+    const response = await deleteUser(id);
+    try {
+      this.setState({
+        users: this.state.users.filter((el) => el.id !== id),
+      });
+    } catch (e) {
+      console.log(e);
+    }
+  };
   userList() {
     return this.state.users.map((currentUser) => {
       return (
         <UserList
           user={currentUser}
           deleteUser={this.removeUser}
+          deleteAlert={this.deleteAlert}
           key={currentUser.id}
         />
       );
     });
+  }
+
+  deleteAlert = (id) => {
+    const swalWithBootstrapButtons = Swal.mixin({
+      customClass: {
+        confirmButton: "btn btn-success",
+        cancelButton: "btn btn-danger",
+      },
+      buttonsStyling: false,
+    });
+
+    swalWithBootstrapButtons
+      .fire({
+        title: "Are you sure?",
+        text: "Do you want to remove this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonText: "Yes",
+        cancelButtonText: "No",
+        reverseButtons: true,
+      })
+      .then((result) => {
+        if (result.isConfirmed) {
+          this.removeUser(id);
+          swalWithBootstrapButtons.fire(
+            "Deleted!",
+            "Your file has been deleted.",
+            "success"
+          );
+        } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel
+        ) {
+          swalWithBootstrapButtons.fire(
+            "Cancelled",
+            "Your imaginary file is safe :)",
+            "error"
+          );
+        }
+      });
+  };
+
+  componentDidUpdate() {
+    this.$el = $(this.el);
+    this.$el.DataTable();
   }
 
   render() {
@@ -42,13 +103,13 @@ class ReviewerList extends Component {
             <h3>Users List</h3>
           </Col>
           <Col md="2">
-            <Button variant="warning">
+            <Button variant="primary">
               <b>Add User</b>
             </Button>
           </Col>
         </Row>
         <br></br>
-        <Table striped bordered hover>
+        <table className="display" ref={(el) => (this.el = el)}>
           <thead>
             <tr>
               <th>First Name</th>
@@ -59,19 +120,42 @@ class ReviewerList extends Component {
             </tr>
           </thead>
           <tbody>{this.userList()}</tbody>
-        </Table>
+          <tfoot>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Country</th>
+              <th>Action</th>
+            </tr>
+          </tfoot>
+        </table>
       </div>
     );
   }
 }
 export default ReviewerList;
-
 const UserList = (props) => (
   <tr>
     <td>{props.user.firstName}</td>
     <td>{props.user.lastName}</td>
     <td>{props.user.email}</td>
     <td>{props.user.country}</td>
-    <td>edit| | delete</td>
+    <td>
+      <Button className="m-2 " variant="success">
+        edit
+      </Button>
+
+      <Button
+        className="m-1 p-1.5"
+        variant="danger"
+        onClick={() => {
+          props.deleteAlert(props.user.id);
+          // props.deleteUser(props.user.id);
+        }}
+      >
+        delete
+      </Button>
+    </td>
   </tr>
 );
