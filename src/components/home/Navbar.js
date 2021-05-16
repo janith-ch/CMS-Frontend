@@ -1,11 +1,20 @@
 /** @format */
 
 import React, { useState, useEffect } from "react";
-import { Button } from "./Button";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import "./Navbar.css";
+import {Button} from "./Button";
+
 
 function Navbar() {
+
+  const history = useHistory();
+
+  const routeChange = () => {
+    let path = '../Login';
+    history.push(path);
+  }
   const [click, setClick] = useState(false);
   const [button, setButton] = useState(true);
 
@@ -24,61 +33,44 @@ function Navbar() {
     showButton();
   }, []);
 
-  window.addEventListener("resize", showButton);
-
+  window.addEventListener('resize', showButton);
   return (
     <>
-      <nav className="navbar">
-        <div className="navbar-container">
-          <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
+      <nav className="dev-navbar">
+        <div className="dev-navbar-container">
+          <Link to="/" className="dev-navbar-logo" onClick={closeMobileMenu}>
             Attendify
-            <i class="fab fa-typo3" />
+            <i className="fab fa-typo3" />
           </Link>
-          <div className="menu-icon" onClick={handleClick}>
-            <i className={click ? "fas fa-times" : "fas fa-bars"} />
+          <div className="dev-menu-icon" onClick={handleClick}>
+            <i className={click ? " dev-fa-times" : " dev-fa-bars"} />
           </div>
-          <ul className={click ? "nav-menu active" : "nav-menu"}>
-            <li className="nav-item">
-              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
+          <ul className={click ? "dev-nav-menu active" : "dev-nav-menu"}>
+            <li className="dev-nav-item">
+              <Link to="/" className="dev-nav-links" onClick={closeMobileMenu}>
                 Home
               </Link>
             </li>
-            <li className="nav-item">
+            <li className="dev-nav-item">
               <Link
-                to="/services"
-                className="nav-links"
+                to="/Login"
+                className="dev-nav-links"
                 onClick={closeMobileMenu}
               >
                 Keynotes
               </Link>
             </li>
-            <li className="nav-item">
+            <li className="dev-nav-item">
               <Link
                 to="/aboutus"
-                className="nav-links"
+                className="dev-nav-links"
                 onClick={closeMobileMenu}
               >
                 Workshops
               </Link>
             </li>
-
-            <li className="nav-item">
-              <Link to="/Admin" className="nav-links" onClick={closeMobileMenu}>
-                Admin
-              </Link>
-            </li>
-
-            <li>
-              <Link
-                to="/sign-up"
-                className="nav-links-mobile"
-                onClick={closeMobileMenu}
-              >
-                Sign Up
-              </Link>
-            </li>
           </ul>
-          {/*{button && <Button buttonStyle='btn--outline'>SIGN UP</Button>}*/}
+          {button && <Button buttonStyle='dev-btn--outline' onClick={routeChange}>SIGN UP</Button>}
         </div>
       </nav>
     </>

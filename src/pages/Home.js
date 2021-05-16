@@ -9,7 +9,7 @@ import Navbar from "../components/home/Navbar";
 function Home() {
   return (
     <>
-       <Navbar/>
+      <Navbar />
       <HeroSection />
       <Footer />
     </>
