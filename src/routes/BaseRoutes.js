@@ -1,0 +1,41 @@
+/** @format */
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+//import Routepaths from "./route-paths";
+import Dashboard from "../components/admin/dashboard/Dashboard";
+import CreateUser from "../components/admin/user/CreateUser";
+import UserList from "../components/admin/user/UserList";
+import Admin from "../pages/Admin";
+import Home from "../pages/Home";
+
+const BaseRoutes = () => {
+  //const paths = RoutePaths;
+  return (
+    <>
+      <Switch>
+        <Route path="/" exact component={Home} />
+
+        <Route
+          path="/admin"
+          render={({ match: { url } }) => (
+            <Admin>
+              <Route path={url} component={Dashboard} exact />
+              <Route path={`${url}/dashboard`} component={Dashboard} />
+              <Route
+                path={`${url}/user-list`}
+                render={({ match: { url } }) => (
+                  <div>
+                    <Route path={url} component={UserList} exact />
+                    <Route path={`${url}/create`} component={CreateUser} />
+                  </div>
+                )}
+              />
+            </Admin>
+          )}
+        />
+      </Switch>
+    </>
+  );
+};
+
+export default BaseRoutes;

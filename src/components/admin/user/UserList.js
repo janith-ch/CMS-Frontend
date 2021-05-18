@@ -9,7 +9,7 @@ import { getUserList, deleteUser } from "../../../service/User";
 const $ = require("jquery");
 $.DataTable = require("datatables.net");
 
-class ReviewerList extends Component {
+class UserList extends Component {
   state = { users: [] };
 
   componentDidMount() {
@@ -18,7 +18,7 @@ class ReviewerList extends Component {
 
   fetchUser = async () => {
     try {
-      const response = await getUserList("admin");
+      const response = await getUserList("user");
       console.log(response.data);
       this.setState({ users: response.data || [] });
     } catch (e) {
@@ -39,7 +39,7 @@ class ReviewerList extends Component {
   userList() {
     return this.state.users.map((currentUser) => {
       return (
-        <UserList
+        <UserTbody
           user={currentUser}
           deleteUser={this.removeUser}
           deleteAlert={this.deleteAlert}
@@ -47,6 +47,9 @@ class ReviewerList extends Component {
         />
       );
     });
+  }
+  addUser() {
+    this.props.history.push("/admin/user-list/create");
   }
 
   deleteAlert = (id) => {
@@ -103,7 +106,12 @@ class ReviewerList extends Component {
             <h3>Users List</h3>
           </Col>
           <Col md="2">
-            <Button variant="primary">
+            <Button
+              variant="primary"
+              onClick={() => {
+                this.addUser();
+              }}
+            >
               <b>Add User</b>
             </Button>
           </Col>
@@ -134,8 +142,8 @@ class ReviewerList extends Component {
     );
   }
 }
-export default ReviewerList;
-const UserList = (props) => (
+export default UserList;
+const UserTbody = (props) => (
   <tr>
     <td>{props.user.firstName}</td>
     <td>{props.user.lastName}</td>
@@ -151,7 +159,6 @@ const UserList = (props) => (
         variant="danger"
         onClick={() => {
           props.deleteAlert(props.user.id);
-          // props.deleteUser(props.user.id);
         }}
       >
         delete
