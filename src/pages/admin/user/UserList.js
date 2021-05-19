@@ -1,15 +1,15 @@
 /** @format */
 
 import React, { Component } from "react";
-import "bootstrap/dist/css/bootstrap.css";
 import Swal from "sweetalert2";
 import "../../../../node_modules/datatables.net-dt/css/jquery.dataTables.css";
 import { Col, Button, Row } from "react-bootstrap";
 import { getUserList, deleteUser } from "../../../service/User";
+import UserBody from "../../../components/admin/user/UserBody";
 const $ = require("jquery");
 $.DataTable = require("datatables.net");
 
-class ReviewerList extends Component {
+class UserList extends Component {
   state = { users: [] };
 
   componentDidMount() {
@@ -18,7 +18,7 @@ class ReviewerList extends Component {
 
   fetchUser = async () => {
     try {
-      const response = await getUserList("admin");
+      const response = await getUserList("user");
       console.log(response.data);
       this.setState({ users: response.data || [] });
     } catch (e) {
@@ -39,14 +39,16 @@ class ReviewerList extends Component {
   userList() {
     return this.state.users.map((currentUser) => {
       return (
-        <UserList
+        <UserBody
           user={currentUser}
-          deleteUser={this.removeUser}
           deleteAlert={this.deleteAlert}
           key={currentUser.id}
         />
       );
     });
+  }
+  addUser() {
+    this.props.history.push("/admin/user-list/create");
   }
 
   deleteAlert = (id) => {
@@ -103,13 +105,23 @@ class ReviewerList extends Component {
             <h3>Users List</h3>
           </Col>
           <Col md="2">
-            <Button variant="primary">
+            <Button
+              variant="primary"
+              onClick={() => {
+                this.addUser();
+              }}
+            >
               <b>Add User</b>
             </Button>
           </Col>
         </Row>
         <br></br>
-        <table className="display" ref={(el) => (this.el = el)}>
+
+        <table
+          className="display"
+          ref={(el) => (this.el = el)}
+          style={{ boxShadow: "8px 8px  #dce3e0" }}
+        >
           <thead>
             <tr>
               <th>First Name</th>
@@ -134,28 +146,4 @@ class ReviewerList extends Component {
     );
   }
 }
-export default ReviewerList;
-const UserList = (props) => (
-  <tr>
-    <td>{props.user.firstName}</td>
-    <td>{props.user.lastName}</td>
-    <td>{props.user.email}</td>
-    <td>{props.user.country}</td>
-    <td>
-      <Button className="m-2 " variant="success">
-        edit
-      </Button>
-
-      <Button
-        className="m-1 p-1.5"
-        variant="danger"
-        onClick={() => {
-          props.deleteAlert(props.user.id);
-          // props.deleteUser(props.user.id);
-        }}
-      >
-        delete
-      </Button>
-    </td>
-  </tr>
-);
+export default UserList;
