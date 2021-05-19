@@ -22,7 +22,6 @@ export const Button = ({
   const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0];
 
   return (
-    <Link to="/sign-up" className="dev-btn-mobile">
       <button
         className={`dev-btn ${checkButtonStyle} ${checkButtonSize}`}
         onClick={onClick}
@@ -30,6 +29,5 @@ export const Button = ({
       >
         {children}
       </button>
-    </Link>
   );
 };
