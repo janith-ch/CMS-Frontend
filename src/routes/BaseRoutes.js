@@ -2,10 +2,10 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 //import Routepaths from "./route-paths";
-import Dashboard from "../components/admin/dashboard/Dashboard";
-import CreateUser from "../components/admin/user/CreateUser";
-import UserList from "../components/admin/user/UserList";
-import Admin from "../pages/Admin";
+import Dashboard from "../pages/admin/dashboard/Dashboard";
+import CreateUser from "../pages/admin/user/CreateUser";
+import UserList from "../pages/admin/user/UserList";
+import Admin from "../pages/admin/Admin";
 import Home from "../pages/Home";
 
 const BaseRoutes = () => {

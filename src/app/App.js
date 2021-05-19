@@ -5,7 +5,7 @@ import "./App.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import BaseRoutes from "../routes/BaseRoutes";
 
-//import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/css/bootstrap.css";
 
 function App() {
   return (
