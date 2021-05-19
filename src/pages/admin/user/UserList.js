@@ -42,6 +42,7 @@ class UserList extends Component {
         <UserBody
           user={currentUser}
           deleteAlert={this.deleteAlert}
+          editUser={this.editUser}
           key={currentUser.id}
         />
       );
@@ -50,6 +51,9 @@ class UserList extends Component {
   addUser() {
     this.props.history.push("/admin/user-list/create");
   }
+  editUser = (id) => {
+    this.props.history.push("/admin/user-list/edit/" + id);
+  };
 
   deleteAlert = (id) => {
     const swalWithBootstrapButtons = Swal.mixin({
@@ -102,7 +106,9 @@ class UserList extends Component {
         <Row>
           <Col md="4"></Col>
           <Col md="6">
-            <h3>Users List</h3>
+            <h3>
+              <b>Users List</b>
+            </h3>
           </Col>
           <Col md="2">
             <Button

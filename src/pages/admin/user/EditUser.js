@@ -2,9 +2,9 @@
 
 import React, { Component } from "react";
 import { Col, Button, Form, Row } from "react-bootstrap";
-import { addUser } from "../../../service/User";
+import { getSingleUser, updateUser } from "../../../service/User";
 
-class CreateUser extends Component {
+class EditUser extends Component {
   state = {
     firstName: "",
     lastName: "",
@@ -12,6 +12,27 @@ class CreateUser extends Component {
     userRole: "user",
     password: "",
     country: "",
+  };
+
+  componentDidMount() {
+    this.fetchUser();
+  }
+
+  fetchUser = async () => {
+    try {
+      const response = await getSingleUser(this.props.match.params.id);
+
+      this.setState({
+        firstName: response.data.firstName,
+        lastName: response.data.lastName,
+        email: response.data.email,
+        password: response.data.password,
+        country: response.data.country,
+      });
+    } catch (e) {
+      // error handling
+      console.log(e);
+    }
   };
   onChangeFirstName = (e) => {
     this.setState({
@@ -51,7 +72,7 @@ class CreateUser extends Component {
       country: this.state.country,
     };
     try {
-      const response = await addUser(user);
+      const response = await updateUser(this.props.match.params.id, user);
       // success scenario handle here
       if (response.data) {
         console.log(response.data);
@@ -74,7 +95,7 @@ class CreateUser extends Component {
         <Col md="10" style={{ border: "3px solid #ccd7de" }}>
           <br></br>
           <center>
-            <b>ADD USER</b>
+            <b>EDIT USER</b>
           </center>
           <Form onSubmit={this.onSubmit}>
             <Form.Group>
@@ -140,4 +161,4 @@ class CreateUser extends Component {
   }
 }
 
-export default CreateUser;
+export default EditUser;
