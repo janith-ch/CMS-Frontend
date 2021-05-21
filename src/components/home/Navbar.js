@@ -1,12 +1,22 @@
 /** @format */
 
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
 import "./Navbar.css";
+import {Button} from "./Button";
+
 
 function Navbar() {
+
+  const history = useHistory();
+
+  const routeChange = () => {
+    let path = '../Login';
+    history.push(path);
+  }
   const [click, setClick] = useState(false);
-  const [, setButton] = useState(true);
+  const [button, setButton] = useState(true);
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
@@ -23,8 +33,7 @@ function Navbar() {
     showButton();
   }, []);
 
-  window.addEventListener("resize", showButton);
-
+  window.addEventListener('resize', showButton);
   return (
     <>
       <nav className="dev-navbar">
@@ -44,7 +53,7 @@ function Navbar() {
             </li>
             <li className="dev-nav-item">
               <Link
-                to="/services"
+                to="/Login"
                 className="dev-nav-links"
                 onClick={closeMobileMenu}
               >
@@ -61,6 +70,7 @@ function Navbar() {
               </Link>
             </li>
           </ul>
+          {button && <Button buttonStyle='dev-btn--outline' onClick={routeChange}>SIGN UP</Button>}
         </div>
       </nav>
     </>
