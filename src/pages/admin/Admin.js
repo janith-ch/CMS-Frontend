@@ -12,19 +12,15 @@ function Admin({ children }) {
         <Col md="3">
           <br></br>
           <br></br>
-
           <SideBar />
         </Col>
-
         <Col md="8">
           <br></br>
           <br></br>
           <br></br>
-
           {children}
         </Col>
-
-        <Col md="1"></Col>
+        {<Col md="1"></Col>}
       </Row>
     </>
   );
