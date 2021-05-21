@@ -3,6 +3,7 @@
 import React, { Component } from "react";
 import { Col, Button, Form, Row } from "react-bootstrap";
 import { getSingleUser, updateUser } from "../../../service/User";
+import Paper from "@material-ui/core/Paper";
 
 class EditUser extends Component {
   state = {
@@ -91,72 +92,75 @@ class EditUser extends Component {
 
   render() {
     return (
-      <Row>
-        <Col md="10" style={{ border: "3px solid #ccd7de" }}>
-          <br></br>
-          <center>
-            <b>EDIT USER</b>
-          </center>
-          <Form onSubmit={this.onSubmit}>
-            <Form.Group>
-              <Form.Label>First Name</Form.Label>
-              <Form.Control
-                type="firstName"
-                placeholder="Enter first name"
-                value={this.state.firstName}
-                onChange={this.onChangeFirstName}
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Last Name</Form.Label>
-              <Form.Control
-                type="lastName"
-                placeholder="Enter last name"
-                value={this.state.lastName}
-                onChange={this.onChangeLastName}
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="Enter email"
-                value={this.state.email}
-                onChange={this.onChangeEmail}
-              />
-            </Form.Group>
-
-            <Form.Group>
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Password"
-                value={this.state.password}
-                onChange={this.onChangePassword}
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Country</Form.Label>
-              <Form.Control
-                type="country"
-                placeholder="Enter country"
-                value={this.state.country}
-                onChange={this.onChangeCountry}
-              />
-            </Form.Group>
-
-            <Form.Group id="formGridCheckbox">
-              <Form.Check type="checkbox" label="Check me out" />
-            </Form.Group>
-
-            <Button variant="primary" type="submit">
-              Add User
-            </Button>
+      <Paper elevation={3}>
+        <Row>
+          <Col md="1"></Col>
+          <Col md="10">
             <br></br>
-            <br></br>
-          </Form>
-        </Col>
-      </Row>
+            <center>
+              <b>EDIT USER</b>
+            </center>
+            <Form onSubmit={this.onSubmit}>
+              <Form.Group>
+                <Form.Label>First Name</Form.Label>
+                <Form.Control
+                  type="firstName"
+                  placeholder="Enter first name"
+                  value={this.state.firstName}
+                  onChange={this.onChangeFirstName}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Last Name</Form.Label>
+                <Form.Control
+                  type="lastName"
+                  placeholder="Enter last name"
+                  value={this.state.lastName}
+                  onChange={this.onChangeLastName}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  type="email"
+                  placeholder="Enter email"
+                  value={this.state.email}
+                  onChange={this.onChangeEmail}
+                />
+              </Form.Group>
+
+              <Form.Group>
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  placeholder="Password"
+                  value={this.state.password}
+                  onChange={this.onChangePassword}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Country</Form.Label>
+                <Form.Control
+                  type="country"
+                  placeholder="Enter country"
+                  value={this.state.country}
+                  onChange={this.onChangeCountry}
+                />
+              </Form.Group>
+
+              <Form.Group id="formGridCheckbox">
+                <Form.Check type="checkbox" label="Check me out" />
+              </Form.Group>
+
+              <Button variant="primary" type="submit">
+                Add User
+              </Button>
+              <br></br>
+              <br></br>
+            </Form>
+          </Col>
+        </Row>
+      </Paper>
     );
   }
 }
