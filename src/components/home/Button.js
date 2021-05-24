@@ -2,7 +2,6 @@
 
 import React from "react";
 import "./Button.css";
-import { Link } from "react-router-dom";
 
 const STYLES = ["dev-btn--primary", "dev-btn--outline", "dev-btn--test"];
 
@@ -22,12 +21,12 @@ export const Button = ({
   const checkButtonSize = SIZES.includes(buttonSize) ? buttonSize : SIZES[0];
 
   return (
-      <button
-        className={`dev-btn ${checkButtonStyle} ${checkButtonSize}`}
-        onClick={onClick}
-        type={type}
-      >
-        {children}
-      </button>
+    <button
+      className={`dev-btn ${checkButtonStyle} ${checkButtonSize}`}
+      onClick={onClick}
+      type={type}
+    >
+      {children}
+    </button>
   );
 };
