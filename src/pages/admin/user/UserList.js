@@ -28,6 +28,7 @@ class UserList extends Component {
 
   removeUser = async (id) => {
     const response = await deleteUser(id);
+    console.log(response.data);
     try {
       this.setState({
         users: this.state.users.filter((el) => el.id !== id),
