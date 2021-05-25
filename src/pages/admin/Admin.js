@@ -3,24 +3,25 @@
 import React from "react";
 import { Row } from "react-bootstrap";
 import SideBar from "../../components/admin/sidebar/SideBar";
+import NavBar from "../../components/admin/navbar/NavBar";
 import { Col } from "react-bootstrap";
 
 function Admin({ children }) {
   return (
     <>
       <Row>
-        <Col md="3">
-          <br></br>
-          <br></br>
+        <NavBar />
+        <Col md="1">
           <SideBar />
         </Col>
-        <Col md="8">
+        <Col md="11">
           <br></br>
-          <br></br>
-          <br></br>
-          {children}
+          <Row>
+            <Col md="1"></Col>
+            <Col md="10">{children}</Col>
+            <Col md="1"></Col>
+          </Row>
         </Col>
-        {<Col md="1"></Col>}
       </Row>
     </>
   );
