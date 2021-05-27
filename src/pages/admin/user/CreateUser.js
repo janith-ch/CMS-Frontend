@@ -9,7 +9,7 @@ class CreateUser extends Component {
     firstName: "",
     lastName: "",
     email: "",
-    userRole: "user",
+    userRole: "",
     password: "",
     country: "",
   };
@@ -38,6 +38,11 @@ class CreateUser extends Component {
       country: e.target.value,
     });
   };
+  onChnageUserRole = (e) => {
+    this.setState({
+      userRole: e.target.value,
+    });
+  };
 
   onSubmit = async (e) => {
     e.preventDefault();
@@ -64,6 +69,7 @@ class CreateUser extends Component {
     this.setState({ firstName: "" });
     this.setState({ lastName: "" });
     this.setState({ email: "" });
+    this.setState({ userRole: "" });
     this.setState({ password: "" });
     this.setState({ country: "" });
   };
@@ -104,6 +110,18 @@ class CreateUser extends Component {
                 value={this.state.email}
                 onChange={this.onChangeEmail}
               />
+            </Form.Group>
+            <Form.Group controlId="exampleForm.ControlSelect1">
+              <Form.Label>User Role</Form.Label>
+              <Form.Control
+                as="select"
+                value={this.state.userRole}
+                onChange={this.onChnageUserRole}
+              >
+                <option>user</option>
+                <option>presenter</option>
+                <option>attendee</option>
+              </Form.Control>
             </Form.Group>
 
             <Form.Group>

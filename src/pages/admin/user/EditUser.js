@@ -6,10 +6,11 @@ import { getSingleUser, updateUser } from "../../../service/User";
 
 class EditUser extends Component {
   state = {
+    id: "",
     firstName: "",
     lastName: "",
     email: "",
-    userRole: "user",
+    userRole: "",
     password: "",
     country: "",
   };
@@ -23,9 +24,11 @@ class EditUser extends Component {
       const response = await getSingleUser(this.props.match.params.id);
 
       this.setState({
+        id: response.data.id,
         firstName: response.data.firstName,
         lastName: response.data.lastName,
         email: response.data.email,
+        userRole: response.data.userRole,
         password: response.data.password,
         country: response.data.country,
       });
@@ -59,11 +62,17 @@ class EditUser extends Component {
       country: e.target.value,
     });
   };
+  onChnageUserRole = (e) => {
+    this.setState({
+      userRole: e.target.value,
+    });
+  };
 
   onSubmit = async (e) => {
     e.preventDefault();
 
     const user = {
+      id: this.state.id,
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       email: this.state.email,
@@ -85,6 +94,7 @@ class EditUser extends Component {
     this.setState({ firstName: "" });
     this.setState({ lastName: "" });
     this.setState({ email: "" });
+    this.setState({ userRole: "" });
     this.setState({ password: "" });
     this.setState({ country: "" });
   };
@@ -126,6 +136,20 @@ class EditUser extends Component {
                 onChange={this.onChangeEmail}
               />
             </Form.Group>
+            <Form.Group controlId="exampleForm.ControlSelect1">
+              <Form.Label>User Role</Form.Label>
+              <Form.Control
+                as="select"
+                value={this.state.userRole}
+                onChange={this.onChnageUserRole}
+              >
+                <option>user</option>
+                <option>ws_user</option>
+                <option>researcher</option>
+                <option>presenter</option>
+                <option>attendee</option>
+              </Form.Control>
+            </Form.Group>
 
             <Form.Group>
               <Form.Label>Password</Form.Label>
@@ -150,7 +174,7 @@ class EditUser extends Component {
               <Form.Check type="checkbox" label="Check me out" />
             </Form.Group>
 
-            <Button variant="primary" type="submit">
+            <Button variant="success" type="submit">
               Update User
             </Button>
             <br></br>
