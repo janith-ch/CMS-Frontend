@@ -7,8 +7,8 @@ import {
   UPDATE_USER,
 } from "./handler/Endpoints";
 import { Axios } from "./handler/Index";
-export const getUserList = (s) => {
-  return Axios.post(`${USER}=${s}`);
+export const getUserList = (users) => {
+  return Axios.post(`${USER}=${users}`);
 };
 export const deleteUser = (id) => {
   return Axios.delete(`${DELETE_USER}/${id}`);

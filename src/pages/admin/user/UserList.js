@@ -6,6 +6,7 @@ import "../../../../node_modules/datatables.net-dt/css/jquery.dataTables.css";
 import { Col, Button, Row } from "react-bootstrap";
 import { getUserList, deleteUser } from "../../../service/User";
 import UserBody from "../../../components/admin/user/UserBody";
+import { USERS } from "../UserRole";
 const $ = require("jquery");
 $.DataTable = require("datatables.net");
 
@@ -18,7 +19,7 @@ class UserList extends Component {
 
   fetchUser = async () => {
     try {
-      const response = await getUserList("user");
+      const response = await getUserList(`${USERS}`);
       console.log(response.data);
       this.setState({ users: response.data || [] });
     } catch (e) {
@@ -135,6 +136,7 @@ class UserList extends Component {
               <th>Last Name</th>
               <th>Email</th>
               <th>Country</th>
+              <th>User Type</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -145,6 +147,7 @@ class UserList extends Component {
               <th>Last Name</th>
               <th>Email</th>
               <th>Country</th>
+              <th>User Type</th>
               <th>Action</th>
             </tr>
           </tfoot>
