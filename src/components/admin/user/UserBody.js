@@ -2,9 +2,14 @@
 
 import React, { Component } from "react";
 import { Button } from "react-bootstrap";
-class UserBody extends Component {
-  state = {};
+import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
+import DeleteIcon from "@material-ui/icons/Delete";
+import Status from "./Status";
 
+class UserBody extends Component {
+  state = {
+    userRole: `${this.props.user.userRole}`,
+  };
   render() {
     return (
       <tr>
@@ -12,6 +17,12 @@ class UserBody extends Component {
         <td>{this.props.user.lastName}</td>
         <td>{this.props.user.email}</td>
         <td>{this.props.user.country}</td>
+
+        <td>
+          <b>
+            <Status status={this.props.user.userRole}></Status>
+          </b>
+        </td>
         <td>
           <Button
             className="m-1 "
@@ -20,7 +31,7 @@ class UserBody extends Component {
               this.props.editUser(this.props.user.id);
             }}
           >
-            edit
+            <DeleteIcon />
           </Button>
 
           <Button
@@ -30,7 +41,7 @@ class UserBody extends Component {
               this.props.deleteAlert(this.props.user.id);
             }}
           >
-            delete
+            <DeleteForeverIcon />
           </Button>
         </td>
       </tr>
