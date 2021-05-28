@@ -111,13 +111,14 @@ class CreateUser extends Component {
                 onChange={this.onChangeEmail}
               />
             </Form.Group>
-            <Form.Group controlId="exampleForm.ControlSelect1">
+            <Form.Group>
               <Form.Label>User Role</Form.Label>
               <Form.Control
                 as="select"
                 value={this.state.userRole}
                 onChange={this.onChnageUserRole}
               >
+                <option>select user role</option>
                 <option>user</option>
                 <option>presenter</option>
                 <option>attendee</option>

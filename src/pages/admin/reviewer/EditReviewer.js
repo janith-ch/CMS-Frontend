@@ -143,11 +143,7 @@ class EditReviewer extends Component {
                 value={this.state.userRole}
                 onChange={this.onChnageUserRole}
               >
-                <option>user</option>
-                <option>ws_user</option>
-                <option>researcher</option>
-                <option>presenter</option>
-                <option>attendee</option>
+                <option>reviewer</option>
               </Form.Control>
             </Form.Group>
 
@@ -175,7 +171,7 @@ class EditReviewer extends Component {
             </Form.Group>
 
             <Button variant="success" type="submit">
-              Update Revieweer
+              Update Reviewer
             </Button>
             <br></br>
             <br></br>

@@ -23,7 +23,7 @@ function SideBar() {
         <div>
           <div className="cardView">
             <img alt="measureIcon" src={user} />
-            <p>super Users</p>
+            <p>Super Users</p>
           </div>
         </div>
       </Link>

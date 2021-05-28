@@ -6,7 +6,7 @@ import "../../../../node_modules/datatables.net-dt/css/jquery.dataTables.css";
 import { Col, Button, Row } from "react-bootstrap";
 import { getUserList, deleteUser } from "../../../service/User";
 import UserBody from "../../../components/admin/user/UserBody";
-import { USERS } from "../UserRole";
+import { REVIEWERS } from "../UserRole";
 const $ = require("jquery");
 $.DataTable = require("datatables.net");
 
@@ -19,7 +19,7 @@ class ReviewerList extends Component {
 
   fetchUser = async () => {
     try {
-      const response = await getUserList(`${USERS}`);
+      const response = await getUserList(`${REVIEWERS}`);
       console.log(response.data);
       this.setState({ users: response.data || [] });
     } catch (e) {
@@ -51,10 +51,10 @@ class ReviewerList extends Component {
     });
   }
   addUser() {
-    this.props.history.push("/admin/user-list/create");
+    this.props.history.push("/admin/reviewer-list/create");
   }
   editUser = (id) => {
-    this.props.history.push("/admin/user-list/edit/" + id);
+    this.props.history.push("/admin/reviewer-list/edit/" + id);
   };
 
   deleteAlert = (id) => {
@@ -109,7 +109,7 @@ class ReviewerList extends Component {
           <Col md="4"></Col>
           <Col md="6">
             <h3>
-              <b>Users List</b>
+              <b>REVIEWERS LIST</b>
             </h3>
           </Col>
           <Col md="2">
@@ -119,7 +119,7 @@ class ReviewerList extends Component {
                 this.addUser();
               }}
             >
-              <b>Add User</b>
+              <b>Add Reviewer</b>
             </Button>
           </Col>
         </Row>
