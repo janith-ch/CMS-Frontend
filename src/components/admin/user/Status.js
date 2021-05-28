@@ -14,6 +14,8 @@ function colorForStatus(status) {
       return red;
     case "ws_user":
       return yellow;
+    case "reviewer":
+      return blue;
     default:
       return grey;
   }

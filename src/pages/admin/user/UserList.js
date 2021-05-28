@@ -109,7 +109,7 @@ class UserList extends Component {
           <Col md="4"></Col>
           <Col md="6">
             <h3>
-              <b>Users List</b>
+              <b>USERS LIST</b>
             </h3>
           </Col>
           <Col md="2">

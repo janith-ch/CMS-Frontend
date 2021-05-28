@@ -9,6 +9,8 @@ import UserList from "../pages/admin/user/UserList";
 import ReviewerList from "../pages/admin/reviewer/ReviewerList";
 import Admin from "../pages/admin/Admin";
 import Home from "../pages/Home";
+import CreateReviewer from "../pages/admin/reviewer/CreateReviewer";
+import EditReviewer from "../pages/admin/reviewer/EditReviewer";
 
 const BaseRoutes = () => {
   //const paths = RoutePaths;
@@ -38,8 +40,8 @@ const BaseRoutes = () => {
                 render={({ match: { url } }) => (
                   <div>
                     <Route path={url} component={ReviewerList} exact />
-                    {/* <Route path={`${url}/create`} component={CreateUser} />
-                    <Route path={`${url}/edit/:id`} component={EditUser} /> */}
+                    <Route path={`${url}/create`} component={CreateReviewer} />
+                    <Route path={`${url}/edit/:id`} component={EditReviewer} />
                   </div>
                 )}
               />
