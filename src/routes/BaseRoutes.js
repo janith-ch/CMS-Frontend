@@ -11,6 +11,7 @@ import Admin from "../pages/admin/Admin";
 import Home from "../pages/Home";
 import CreateReviewer from "../pages/admin/reviewer/CreateReviewer";
 import EditReviewer from "../pages/admin/reviewer/EditReviewer";
+import PendingUsers from "../pages/admin/pending users/PendingUsers";
 
 const BaseRoutes = () => {
   //const paths = RoutePaths;
@@ -42,6 +43,14 @@ const BaseRoutes = () => {
                     <Route path={url} component={ReviewerList} exact />
                     <Route path={`${url}/create`} component={CreateReviewer} />
                     <Route path={`${url}/edit/:id`} component={EditReviewer} />
+                  </div>
+                )}
+              />
+              <Route
+                path={`${url}/pending-users`}
+                render={({ match: { url } }) => (
+                  <div>
+                    <Route path={url} component={PendingUsers} exact />
                   </div>
                 )}
               />
