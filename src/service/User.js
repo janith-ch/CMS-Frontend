@@ -5,6 +5,7 @@ import {
   ADD_USER,
   SINGLE_USER,
   UPDATE_USER,
+  UPDATE_USER_ROLE,
 } from "./handler/Endpoints";
 import { Axios } from "./handler/Index";
 export const getUserList = (users) => {
@@ -21,4 +22,7 @@ export const getSingleUser = (id) => {
 };
 export const updateUser = (id, user) => {
   return Axios.put(`${UPDATE_USER}${id}`, user);
+};
+export const updateUserRole = (id, userRole) => {
+  return Axios.put(`${UPDATE_USER_ROLE}${id}`, userRole);
 };

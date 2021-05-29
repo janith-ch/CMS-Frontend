@@ -19,6 +19,14 @@ function SideBar() {
           </div>
         </div>
       </Link>
+      <Link to="/view_Doctors">
+        <div>
+          <div className="cardView">
+            <img alt="doctorIcon" src={event} />
+            <p>Events</p>
+          </div>
+        </div>
+      </Link>
       <Link to="/admin/user-list">
         <div>
           <div className="cardView">
@@ -46,20 +54,11 @@ function SideBar() {
         </div>
       </Link>
 
-      <Link to="/view_Doctors">
-        <div>
-          <div className="cardView">
-            <img alt="doctorIcon" src={event} />
-            <p>Events</p>
-          </div>
-        </div>
-      </Link>
-
-      <Link to="/view_Clinics">
+      <Link to="/admin/pending-users">
         <div>
           <div className="cardView">
             <img alt="clinicIcon" src={articles} />
-            <p>Articles</p>
+            <p>pending Users</p>
           </div>
         </div>
       </Link>
