@@ -3,12 +3,17 @@
 import React, { Component } from "react";
 import { Button } from "react-bootstrap";
 import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
-import Status from "../user/Status";
+import Status from "../Status";
 
 class PendingUserBody extends Component {
   state = {
     userRole: `${this.props.user.userRole}`,
   };
+  reloadUser() {
+    setTimeout(() => {
+      this.props.reloadUser();
+    }, 1000);
+  }
   render() {
     return (
       <tr>
@@ -36,6 +41,7 @@ class PendingUserBody extends Component {
                 this.props.user.id,
                 this.props.user.requestedUserRole
               );
+              this.reloadUser();
             }}
           >
             <ThumbUpAltIcon />
