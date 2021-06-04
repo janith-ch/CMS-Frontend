@@ -1,17 +1,21 @@
 /** @format */
 
 import React, { Component } from "react";
-import Swal from "sweetalert2";
-import "../../../../node_modules/datatables.net-dt/css/jquery.dataTables.css";
 import { Col, Button, Row } from "react-bootstrap";
 import { getUserList, deleteUser } from "../../../service/User";
 import UserBody from "../../../components/admin/user/UserBody";
 import { USERS } from "../UserRole";
+import "../../../../node_modules/datatables.net-dt/css/jquery.dataTables.css";
+import Animation from "../../../components/admin/Animation";
+import Swal from "sweetalert2";
 const $ = require("jquery");
 $.DataTable = require("datatables.net");
 
 class UserList extends Component {
-  state = { users: [] };
+  state = {
+    users: [],
+    loading: false,
+  };
 
   componentDidMount() {
     this.fetchUser();
@@ -19,9 +23,11 @@ class UserList extends Component {
 
   fetchUser = async () => {
     try {
+      this.setState({ loading: true });
       const response = await getUserList(`${USERS}`);
       console.log(response.data);
       this.setState({ users: response.data || [] });
+      this.setState({ loading: false });
     } catch (e) {
       console.log(e);
     }
@@ -103,57 +109,61 @@ class UserList extends Component {
   }
 
   render() {
-    return (
-      <div>
-        <Row>
-          <Col md="4"></Col>
-          <Col md="6">
-            <h3>
-              <b>USERS LIST</b>
-            </h3>
-          </Col>
-          <Col md="2">
-            <Button
-              variant="primary"
-              onClick={() => {
-                this.addUser();
-              }}
-            >
-              <b>Add User</b>
-            </Button>
-          </Col>
-        </Row>
-        <br></br>
+    if (this.state.loading === true) {
+      return <Animation />;
+    } else {
+      return (
+        <div>
+          <Row>
+            <Col md="4"></Col>
+            <Col md="6">
+              <h3>
+                <b>USERS LIST</b>
+              </h3>
+            </Col>
+            <Col md="2">
+              <Button
+                variant="primary"
+                onClick={() => {
+                  this.addUser();
+                }}
+              >
+                <b>Add User</b>
+              </Button>
+            </Col>
+          </Row>
+          <br></br>
 
-        <table
-          className="display"
-          ref={(el) => (this.el = el)}
-          style={{ boxShadow: "8px 8px  #dce3e0" }}
-        >
-          <thead>
-            <tr>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Email</th>
-              <th>Country</th>
-              <th>User Type</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>{this.userList()}</tbody>
-          <tfoot>
-            <tr>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Email</th>
-              <th>Country</th>
-              <th>User Type</th>
-              <th>Action</th>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
-    );
+          <table
+            className="display"
+            ref={(el) => (this.el = el)}
+            style={{ boxShadow: "8px 8px  #dce3e0" }}
+          >
+            <thead>
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Country</th>
+                <th>User Type</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>{this.userList()}</tbody>
+            <tfoot>
+              <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Country</th>
+                <th>User Type</th>
+                <th>Action</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      );
+    }
   }
 }
 export default UserList;

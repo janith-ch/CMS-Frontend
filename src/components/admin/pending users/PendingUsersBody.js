@@ -2,14 +2,18 @@
 
 import React, { Component } from "react";
 import { Button } from "react-bootstrap";
-import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
-import DeleteIcon from "@material-ui/icons/Delete";
+import ThumbUpAltIcon from "@material-ui/icons/ThumbUpAlt";
 import Status from "../Status";
 
-class UserBody extends Component {
+class PendingUserBody extends Component {
   state = {
     userRole: `${this.props.user.userRole}`,
   };
+  reloadUser() {
+    setTimeout(() => {
+      this.props.reloadUser();
+    }, 1000);
+  }
   render() {
     return (
       <tr>
@@ -24,24 +28,23 @@ class UserBody extends Component {
           </b>
         </td>
         <td>
+          <b>
+            <Status status={this.props.user.requestedUserRole}></Status>
+          </b>
+        </td>
+        <td>
           <Button
             className="m-1 "
-            variant="success"
+            variant="warning"
             onClick={() => {
-              this.props.editUser(this.props.user.id);
+              this.props.changeUserRole(
+                this.props.user.id,
+                this.props.user.requestedUserRole
+              );
+              this.reloadUser();
             }}
           >
-            <DeleteIcon />
-          </Button>
-
-          <Button
-            className="m-1 "
-            variant="danger"
-            onClick={() => {
-              this.props.deleteAlert(this.props.user.id);
-            }}
-          >
-            <DeleteForeverIcon />
+            <ThumbUpAltIcon />
           </Button>
         </td>
       </tr>
@@ -49,4 +52,4 @@ class UserBody extends Component {
   }
 }
 
-export default UserBody;
+export default PendingUserBody;
