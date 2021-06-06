@@ -107,6 +107,13 @@ class EditReviewer extends Component {
         .then((result) => {
           if (result.isConfirmed) {
             updateUser(this.props.match.params.id, user);
+
+            this.setState({ firstName: "" });
+            this.setState({ lastName: "" });
+            this.setState({ email: "" });
+            this.setState({ userRole: "" });
+            this.setState({ password: "" });
+            this.setState({ country: "" });
           } else if (result.dismiss === Swal.DismissReason.cancel) {
             swalWithBootstrapButtons.fire(
               "Cancelled",
@@ -115,17 +122,10 @@ class EditReviewer extends Component {
             );
           }
         });
-    } catch (ex) {
+    } catch (e) {
       // error handling
       console.log(e);
     }
-
-    this.setState({ firstName: "" });
-    this.setState({ lastName: "" });
-    this.setState({ email: "" });
-    this.setState({ userRole: "" });
-    this.setState({ password: "" });
-    this.setState({ country: "" });
   };
 
   render() {

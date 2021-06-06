@@ -14,6 +14,10 @@ import EditReviewer from "../pages/admin/reviewer/EditReviewer";
 import PendingUsers from "../pages/admin/pending users/PendingUsers";
 import HomeDashboard from "../pages/home/dashboard/HomeDashboard";
 
+import CreateSuperUser from "../pages/admin/super users/CreateSuperUser";
+import EditSuperUser from "../pages/admin/super users/EditSuperUser";
+import SuperUserList from "../pages/admin/super users/SuperUserList";
+
 const BaseRoutes = () => {
   //const paths = RoutePaths;
   return (
@@ -60,6 +64,16 @@ const BaseRoutes = () => {
                 render={({ match: { url } }) => (
                   <div>
                     <Route path={url} component={PendingUsers} exact />
+                  </div>
+                )}
+              />
+              <Route
+                path={`${url}/super-users`}
+                render={({ match: { url } }) => (
+                  <div>
+                    <Route path={url} component={SuperUserList} exact />
+                    <Route path={`${url}/create`} component={CreateSuperUser} />
+                    <Route path={`${url}/edit/:id`} component={EditSuperUser} />
                   </div>
                 )}
               />
