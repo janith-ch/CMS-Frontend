@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import { Col, Button, Form, Row } from "react-bootstrap";
 import { getSingleUser, updateUser } from "../../../service/User";
 import Animation from "../../../components/admin/Animation";
+import Swal from "sweetalert2";
 
 class EditReviewer extends Component {
   state = {
@@ -85,11 +86,35 @@ class EditReviewer extends Component {
       country: this.state.country,
     };
     try {
-      const response = await updateUser(this.props.match.params.id, user);
-      // success scenario handle here
-      if (response.data) {
-        console.log(response.data);
-      }
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: "btn btn-success m-2",
+          cancelButton: "btn btn-danger m-2",
+        },
+        buttonsStyling: false,
+      });
+
+      swalWithBootstrapButtons
+        .fire({
+          title: "Are you sure?",
+          text: "Do you want to Update this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonText: "Yes, Update it!",
+          cancelButtonText: "No, Cancel!",
+          reverseButtons: true,
+        })
+        .then((result) => {
+          if (result.isConfirmed) {
+            updateUser(this.props.match.params.id, user);
+          } else if (result.dismiss === Swal.DismissReason.cancel) {
+            swalWithBootstrapButtons.fire(
+              "Cancelled",
+              "User not Updated :)",
+              "error"
+            );
+          }
+        });
     } catch (ex) {
       // error handling
       console.log(e);

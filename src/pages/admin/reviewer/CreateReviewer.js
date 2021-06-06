@@ -3,6 +3,7 @@
 import React, { Component } from "react";
 import { Col, Button, Form, Row } from "react-bootstrap";
 import { addUser } from "../../../service/User";
+import Swal from "sweetalert2";
 
 class CreateReviewer extends Component {
   state = {
@@ -57,11 +58,35 @@ class CreateReviewer extends Component {
       country: this.state.country,
     };
     try {
-      const response = await addUser(user);
-      // success scenario handle here
-      if (response.data) {
-        console.log(response.data);
-      }
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: "btn btn-success m-2",
+          cancelButton: "btn btn-danger m-2",
+        },
+        buttonsStyling: false,
+      });
+
+      swalWithBootstrapButtons
+        .fire({
+          title: "Are you sure?",
+          text: "Do you want to Add this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonText: "Yes, Add it!",
+          cancelButtonText: "No, Cancel!",
+          reverseButtons: true,
+        })
+        .then((result) => {
+          if (result.isConfirmed) {
+            addUser(user);
+          } else if (result.dismiss === Swal.DismissReason.cancel) {
+            swalWithBootstrapButtons.fire(
+              "Cancelled",
+              "User not Add :)",
+              "error"
+            );
+          }
+        });
     } catch (ex) {
       // error handling
       console.log(e);
