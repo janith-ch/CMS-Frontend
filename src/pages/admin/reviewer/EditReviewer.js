@@ -3,6 +3,7 @@
 import React, { Component } from "react";
 import { Col, Button, Form, Row } from "react-bootstrap";
 import { getSingleUser, updateUser } from "../../../service/User";
+import Animation from "../../../components/admin/Animation";
 
 class EditReviewer extends Component {
   state = {
@@ -13,6 +14,7 @@ class EditReviewer extends Component {
     userRole: "",
     password: "",
     country: "",
+    loading: false,
   };
 
   componentDidMount() {
@@ -21,6 +23,7 @@ class EditReviewer extends Component {
 
   fetchUser = async () => {
     try {
+      this.setState({ loading: true });
       const response = await getSingleUser(this.props.match.params.id);
 
       this.setState({
@@ -32,6 +35,7 @@ class EditReviewer extends Component {
         password: response.data.password,
         country: response.data.country,
       });
+      this.setState({ loading: false });
     } catch (e) {
       // error handling
       console.log(e);
@@ -100,86 +104,90 @@ class EditReviewer extends Component {
   };
 
   render() {
-    return (
-      <Row>
-        <Col md="2"></Col>
-        <Col md="8">
-          <br></br>
-          <center>
-            <b>EDIT REVIEWER</b>
-          </center>
-          <Form onSubmit={this.onSubmit}>
-            <Form.Group>
-              <Form.Label>First Name</Form.Label>
-              <Form.Control
-                type="firstName"
-                placeholder="Enter first name"
-                value={this.state.firstName}
-                onChange={this.onChangeFirstName}
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Last Name</Form.Label>
-              <Form.Control
-                type="lastName"
-                placeholder="Enter last name"
-                value={this.state.lastName}
-                onChange={this.onChangeLastName}
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Email</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="Enter email"
-                value={this.state.email}
-                onChange={this.onChangeEmail}
-              />
-            </Form.Group>
-            <Form.Group controlId="exampleForm.ControlSelect1">
-              <Form.Label>User Role</Form.Label>
-              <Form.Control
-                as="select"
-                value={this.state.userRole}
-                onChange={this.onChnageUserRole}
-              >
-                <option>reviewer</option>
-              </Form.Control>
-            </Form.Group>
-
-            <Form.Group>
-              <Form.Label>Password</Form.Label>
-              <Form.Control
-                type="password"
-                placeholder="Password"
-                value={this.state.password}
-                onChange={this.onChangePassword}
-              />
-            </Form.Group>
-            <Form.Group>
-              <Form.Label>Country</Form.Label>
-              <Form.Control
-                type="country"
-                placeholder="Enter country"
-                value={this.state.country}
-                onChange={this.onChangeCountry}
-              />
-            </Form.Group>
-
-            <Form.Group id="formGridCheckbox">
-              <Form.Check type="checkbox" label="Check me out" />
-            </Form.Group>
-
-            <Button variant="success" type="submit">
-              Update Reviewer
-            </Button>
+    if (this.state.loading === true) {
+      return <Animation />;
+    } else {
+      return (
+        <Row>
+          <Col md="2"></Col>
+          <Col md="8">
             <br></br>
-            <br></br>
-          </Form>
-        </Col>
-        <Col md="2"></Col>
-      </Row>
-    );
+            <center>
+              <b>EDIT REVIEWER</b>
+            </center>
+            <Form onSubmit={this.onSubmit}>
+              <Form.Group>
+                <Form.Label>First Name</Form.Label>
+                <Form.Control
+                  type="firstName"
+                  placeholder="Enter first name"
+                  value={this.state.firstName}
+                  onChange={this.onChangeFirstName}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Last Name</Form.Label>
+                <Form.Control
+                  type="lastName"
+                  placeholder="Enter last name"
+                  value={this.state.lastName}
+                  onChange={this.onChangeLastName}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Email</Form.Label>
+                <Form.Control
+                  type="email"
+                  placeholder="Enter email"
+                  value={this.state.email}
+                  onChange={this.onChangeEmail}
+                />
+              </Form.Group>
+              <Form.Group controlId="exampleForm.ControlSelect1">
+                <Form.Label>User Role</Form.Label>
+                <Form.Control
+                  as="select"
+                  value={this.state.userRole}
+                  onChange={this.onChnageUserRole}
+                >
+                  <option>reviewer</option>
+                </Form.Control>
+              </Form.Group>
+
+              <Form.Group>
+                <Form.Label>Password</Form.Label>
+                <Form.Control
+                  type="password"
+                  placeholder="Password"
+                  value={this.state.password}
+                  onChange={this.onChangePassword}
+                />
+              </Form.Group>
+              <Form.Group>
+                <Form.Label>Country</Form.Label>
+                <Form.Control
+                  type="country"
+                  placeholder="Enter country"
+                  value={this.state.country}
+                  onChange={this.onChangeCountry}
+                />
+              </Form.Group>
+
+              <Form.Group id="formGridCheckbox">
+                <Form.Check type="checkbox" label="Check me out" />
+              </Form.Group>
+
+              <Button variant="success" type="submit">
+                Update Reviewer
+              </Button>
+              <br></br>
+              <br></br>
+            </Form>
+          </Col>
+          <Col md="2"></Col>
+        </Row>
+      );
+    }
   }
 }
 

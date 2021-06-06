@@ -1,39 +1,16 @@
 /** @format */
 
-import React, { useState, useEffect } from "react";
-import { Link } from 'react-router-dom';
-import { useHistory } from "react-router-dom";
-import "./Navbar.css";
-import {Button} from "./Button";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
+import "./Navbar.css";
+import { Button } from "react-bootstrap";
 
 function Navbar() {
-
-  const history = useHistory();
-
-  const routeChange = () => {
-    let path = '../Login';
-    history.push(path);
-  }
   const [click, setClick] = useState(false);
-  const [button, setButton] = useState(true);
-
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
-  const showButton = () => {
-    if (window.innerWidth <= 960) {
-      setButton(false);
-    } else {
-      setButton(true);
-    }
-  };
-
-  useEffect(() => {
-    showButton();
-  }, []);
-
-  window.addEventListener('resize', showButton);
   return (
     <>
       <nav className="dev-navbar">
@@ -47,7 +24,11 @@ function Navbar() {
           </div>
           <ul className={click ? "dev-nav-menu active" : "dev-nav-menu"}>
             <li className="dev-nav-item">
-              <Link to="/" className="dev-nav-links" onClick={closeMobileMenu}>
+              <Link
+                to="/home/dashboard"
+                className="dev-nav-links"
+                onClick={closeMobileMenu}
+              >
                 Home
               </Link>
             </li>
@@ -70,7 +51,7 @@ function Navbar() {
               </Link>
             </li>
           </ul>
-          {button && <Button buttonStyle='dev-btn--outline' onClick={routeChange}>SIGN UP</Button>}
+          <Button variant="warning">Sign Up</Button>{" "}
         </div>
       </nav>
     </>
