@@ -3,13 +3,14 @@
 import React, { Component } from "react";
 import { Button } from "react-bootstrap";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
-import DeleteIcon from "@material-ui/icons/Delete";
+import EditIcon from "@material-ui/icons/Edit";
 import Status from "../Status";
 
 class UserBody extends Component {
   state = {
     userRole: `${this.props.user.userRole}`,
   };
+
   render() {
     return (
       <tr>
@@ -31,7 +32,7 @@ class UserBody extends Component {
               this.props.editUser(this.props.user.id);
             }}
           >
-            <DeleteIcon />
+            <EditIcon />
           </Button>
 
           <Button

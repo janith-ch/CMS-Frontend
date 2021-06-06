@@ -48,11 +48,38 @@ class PendingUsers extends Component {
   changeUserRole = async (id, userRole) => {
     console.log(userRole);
     try {
-      const userRoles = {
-        userRole: userRole,
-      };
-      const response = await updateUserRole(id, userRoles);
-      console.log(response.data);
+      const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+          confirmButton: "btn btn-success m-2",
+          cancelButton: "btn btn-danger m-2",
+        },
+        buttonsStyling: false,
+      });
+
+      swalWithBootstrapButtons
+        .fire({
+          title: "Are you sure?",
+          text: "Do you want to Accept this request!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonText: "Yes, Accept it!",
+          cancelButtonText: "No, Cancel!",
+          reverseButtons: true,
+        })
+        .then((result) => {
+          if (result.isConfirmed) {
+            const userRoles = {
+              userRole: userRole,
+            };
+            updateUserRole(id, userRoles);
+          } else if (result.dismiss === Swal.DismissReason.cancel) {
+            swalWithBootstrapButtons.fire(
+              "Cancelled",
+              "User not Accepted :)",
+              "error"
+            );
+          }
+        });
     } catch (e) {
       console.log(e);
     }

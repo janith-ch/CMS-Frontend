@@ -19,6 +19,7 @@ class UserList extends Component {
 
   componentDidMount() {
     this.fetchUser();
+    console.log("working");
   }
 
   fetchUser = async () => {
