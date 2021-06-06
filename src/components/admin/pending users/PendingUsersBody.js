@@ -12,7 +12,7 @@ class PendingUserBody extends Component {
   reloadUser() {
     setTimeout(() => {
       this.props.reloadUser();
-    }, 1000);
+    }, 500);
   }
   render() {
     return (

@@ -8,17 +8,26 @@ import EditUser from "../pages/admin/user/EditUser";
 import UserList from "../pages/admin/user/UserList";
 import ReviewerList from "../pages/admin/reviewer/ReviewerList";
 import Admin from "../pages/admin/Admin";
-import Home from "../pages/Home";
+import Home from "../pages/home/Home";
 import CreateReviewer from "../pages/admin/reviewer/CreateReviewer";
 import EditReviewer from "../pages/admin/reviewer/EditReviewer";
 import PendingUsers from "../pages/admin/pending users/PendingUsers";
+import HomeDashboard from "../pages/home/dashboard/HomeDashboard";
 
 const BaseRoutes = () => {
   //const paths = RoutePaths;
   return (
     <>
       <Switch>
-        <Route path="/" exact component={Home} />
+        <Route
+          path="/home"
+          render={({ match: { url } }) => (
+            <Home>
+              <Route path={url} component={HomeDashboard} exact />
+              <Route path={`${url}/dashboard`} component={HomeDashboard} />
+            </Home>
+          )}
+        />
 
         <Route
           path="/admin"
