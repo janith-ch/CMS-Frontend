@@ -2,41 +2,17 @@
 
 import React, { Component } from "react";
 import { Col, Button, Form, Row } from "react-bootstrap";
-import { getSingleUser, updateUser } from "../../../service/User";
+import { addUser } from "../../../service/User";
 import Swal from "sweetalert2";
 
-class EditUser extends Component {
+class CreateSuperUser extends Component {
   state = {
-    id: "",
     firstName: "",
     lastName: "",
     email: "",
     userRole: "",
     password: "",
     country: "",
-  };
-
-  componentDidMount() {
-    this.fetchUser();
-  }
-
-  fetchUser = async () => {
-    try {
-      const response = await getSingleUser(this.props.match.params.id);
-
-      this.setState({
-        id: response.data.id,
-        firstName: response.data.firstName,
-        lastName: response.data.lastName,
-        email: response.data.email,
-        userRole: response.data.userRole,
-        password: response.data.password,
-        country: response.data.country,
-      });
-    } catch (e) {
-      // error handling
-      console.log(e);
-    }
   };
   onChangeFirstName = (e) => {
     this.setState({
@@ -70,11 +46,9 @@ class EditUser extends Component {
   };
 
   onSubmit = async (e) => {
-    console.log(e);
     e.preventDefault();
 
     const user = {
-      id: this.state.id,
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       email: this.state.email,
@@ -94,43 +68,35 @@ class EditUser extends Component {
       swalWithBootstrapButtons
         .fire({
           title: "Are you sure?",
-          text: "Do you want to Update this!",
+          text: "Do you want to Add this!",
           icon: "warning",
           showCancelButton: true,
-          confirmButtonText: "Yes, Update it!",
+          confirmButtonText: "Yes, Add it!",
           cancelButtonText: "No, Cancel!",
           reverseButtons: true,
         })
         .then((result) => {
           if (result.isConfirmed) {
-            updateUser(this.props.match.params.id, user);
-
-            this.setState({ firstName: "" });
-            this.setState({ lastName: "" });
-            this.setState({ email: "" });
-            this.setState({ userRole: "" });
-            this.setState({ password: "" });
-            this.setState({ country: "" });
-
-            swalWithBootstrapButtons.fire(
-              "Updated!",
-              "User has been Updates.",
-              "success"
-            );
-
-            // this.props.history.push("/admin/user-list");
+            addUser(user);
           } else if (result.dismiss === Swal.DismissReason.cancel) {
             swalWithBootstrapButtons.fire(
               "Cancelled",
-              "User not Updated :)",
+              "User not Add :)",
               "error"
             );
           }
         });
-    } catch (e) {
+    } catch (ex) {
       // error handling
       console.log(e);
     }
+
+    this.setState({ firstName: "" });
+    this.setState({ lastName: "" });
+    this.setState({ email: "" });
+    this.setState({ userRole: "" });
+    this.setState({ password: "" });
+    this.setState({ country: "" });
   };
 
   render() {
@@ -140,7 +106,7 @@ class EditUser extends Component {
         <Col md="8">
           <br></br>
           <center>
-            <b>EDIT USER</b>
+            <b>ADD SUPER USER</b>
           </center>
           <Form onSubmit={this.onSubmit}>
             <Form.Group>
@@ -170,18 +136,16 @@ class EditUser extends Component {
                 onChange={this.onChangeEmail}
               />
             </Form.Group>
-            <Form.Group controlId="exampleForm.ControlSelect1">
+            <Form.Group>
               <Form.Label>User Role</Form.Label>
               <Form.Control
                 as="select"
                 value={this.state.userRole}
                 onChange={this.onChnageUserRole}
               >
-                <option>user</option>
-                <option>ws_user</option>
-                <option>researcher</option>
-                <option>presenter</option>
-                <option>attendee</option>
+                <option>select user role</option>
+                <option>Admin</option>
+                <option>Editor</option>
               </Form.Control>
             </Form.Group>
 
@@ -208,9 +172,10 @@ class EditUser extends Component {
               <Form.Check type="checkbox" label="Check me out" />
             </Form.Group>
 
-            <Button variant="success" type="submit">
-              Update User
+            <Button variant="primary" type="submit">
+              Create Super User
             </Button>
+
             <br></br>
             <br></br>
           </Form>
@@ -221,4 +186,4 @@ class EditUser extends Component {
   }
 }
 
-export default EditUser;
+export default CreateSuperUser;

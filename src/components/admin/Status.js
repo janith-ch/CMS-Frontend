@@ -16,6 +16,10 @@ function colorForStatus(status) {
       return yellow;
     case "reviewer":
       return blue;
+    case "Admin":
+      return red;
+    case "Editor":
+      return blue;
     default:
       return grey;
   }

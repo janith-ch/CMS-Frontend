@@ -5,7 +5,7 @@ import { Col, Button, Form, Row } from "react-bootstrap";
 import { getSingleUser, updateUser } from "../../../service/User";
 import Swal from "sweetalert2";
 
-class EditUser extends Component {
+class EditSuperUser extends Component {
   state = {
     id: "",
     firstName: "",
@@ -140,7 +140,7 @@ class EditUser extends Component {
         <Col md="8">
           <br></br>
           <center>
-            <b>EDIT USER</b>
+            <b>EDIT SUPER USER</b>
           </center>
           <Form onSubmit={this.onSubmit}>
             <Form.Group>
@@ -177,11 +177,8 @@ class EditUser extends Component {
                 value={this.state.userRole}
                 onChange={this.onChnageUserRole}
               >
-                <option>user</option>
-                <option>ws_user</option>
-                <option>researcher</option>
-                <option>presenter</option>
-                <option>attendee</option>
+                <option>Admin</option>
+                <option>Editor</option>
               </Form.Control>
             </Form.Group>
 
@@ -209,7 +206,7 @@ class EditUser extends Component {
             </Form.Group>
 
             <Button variant="success" type="submit">
-              Update User
+              Update Super User
             </Button>
             <br></br>
             <br></br>
@@ -221,4 +218,4 @@ class EditUser extends Component {
   }
 }
 
-export default EditUser;
+export default EditSuperUser;
