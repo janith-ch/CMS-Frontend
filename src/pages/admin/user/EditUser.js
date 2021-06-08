@@ -177,11 +177,11 @@ class EditUser extends Component {
                 value={this.state.userRole}
                 onChange={this.onChnageUserRole}
               >
-                <option>user</option>
-                <option>ws_user</option>
-                <option>researcher</option>
-                <option>presenter</option>
-                <option>attendee</option>
+                <option>User</option>
+                <option>WS_User</option>
+                <option>Researcher</option>
+                <option>Presenter</option>
+                <option>Attendee</option>
               </Form.Control>
             </Form.Group>
 
