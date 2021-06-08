@@ -175,7 +175,8 @@ class EditReviewer extends Component {
                   value={this.state.userRole}
                   onChange={this.onChnageUserRole}
                 >
-                  <option>reviewer</option>
+                  <option>Select User Role</option>
+                  <option>Reviewer</option>
                 </Form.Control>
               </Form.Group>
 

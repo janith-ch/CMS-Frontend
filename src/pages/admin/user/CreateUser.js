@@ -144,9 +144,9 @@ class CreateUser extends Component {
                 onChange={this.onChnageUserRole}
               >
                 <option>select user role</option>
-                <option>user</option>
-                <option>presenter</option>
-                <option>attendee</option>
+                <option>User</option>
+                <option>Presenter</option>
+                <option>Attendee</option>
               </Form.Control>
             </Form.Group>
 

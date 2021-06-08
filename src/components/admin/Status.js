@@ -6,15 +6,15 @@ import { green, blue, grey, red, yellow } from "@material-ui/core/colors";
 
 function colorForStatus(status) {
   switch (status) {
-    case "researcher":
+    case "Researcher":
       return green;
-    case "attendee":
+    case "Attendee":
       return blue;
-    case "presenter":
+    case "Presenter":
       return red;
-    case "ws_user":
+    case "WS_User":
       return yellow;
-    case "reviewer":
+    case "Reviewer":
       return blue;
     case "Admin":
       return red;
