@@ -1,6 +1,6 @@
 /** @format */
 
-export const USERS = "user, ws_user,researcher,presenter,attendee";
+export const USERS = "User, WS_User,Researcher,Presenter,Attendee";
 export const Super_USERS = "Admin,Editor";
-export const REVIEWERS = "reviewer";
-export const PENDING_USERS = "user";
+export const REVIEWERS = "Reviewer";
+export const PENDING_USERS = "User";
