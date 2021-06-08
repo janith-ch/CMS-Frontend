@@ -27,7 +27,7 @@ function SideBar() {
           </div>
         </div>
       </Link>
-      <Link to="/admin/user-list">
+      <Link to="/admin/super-users">
         <div>
           <div className="cardView">
             <img alt="measureIcon" src={user} />
