@@ -6,6 +6,7 @@ import Dashboard from "../pages/admin/dashboard/Dashboard";
 import CreateUser from "../pages/admin/user/CreateUser";
 import EditUser from "../pages/admin/user/EditUser";
 import UserList from "../pages/admin/user/UserList";
+import UserDetail from "../pages/admin/user/UserDetail";
 import ReviewerList from "../pages/admin/reviewer/ReviewerList";
 import Admin from "../pages/admin/Admin";
 import Home from "../pages/home/Home";
@@ -46,6 +47,7 @@ const BaseRoutes = () => {
                     <Route path={url} component={UserList} exact />
                     <Route path={`${url}/create`} component={CreateUser} />
                     <Route path={`${url}/edit/:id`} component={EditUser} />
+                    <Route path={`${url}/detail/:id`} component={UserDetail} />
                   </div>
                 )}
               />

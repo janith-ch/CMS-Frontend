@@ -52,6 +52,7 @@ class UserList extends Component {
           user={currentUser}
           deleteAlert={this.deleteAlert}
           editUser={this.editUser}
+          viewUser={this.viewUser}
           key={currentUser.id}
         />
       );
@@ -62,6 +63,10 @@ class UserList extends Component {
   }
   editUser = (id) => {
     this.props.history.push("/admin/user-list/edit/" + id);
+  };
+
+  viewUser = (id) => {
+    this.props.history.push("/admin/user-list/detail/" + id);
   };
 
   deleteAlert = (id) => {
