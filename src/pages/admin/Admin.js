@@ -11,17 +11,14 @@ function Admin({ children }) {
     <>
       <Row>
         <NavBar />
-        <Col md="1">
+        <Col md="2">
           <SideBar />
         </Col>
-        <Col md="11">
+        <Col md="9">
           <br></br>
-          <Row>
-            <Col md="1"></Col>
-            <Col md="10">{children}</Col>
-            <Col md="1"></Col>
-          </Row>
+          {children}
         </Col>
+        <Col md="1"></Col>
       </Row>
     </>
   );
