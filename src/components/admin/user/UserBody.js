@@ -5,6 +5,7 @@ import { Button } from "react-bootstrap";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import EditIcon from "@material-ui/icons/Edit";
 import Status from "../Status";
+import PageviewIcon from "@material-ui/icons/Pageview";
 
 class UserBody extends Component {
   state = {
@@ -43,6 +44,15 @@ class UserBody extends Component {
             }}
           >
             <DeleteForeverIcon />
+          </Button>
+          <Button
+            className="m-1 "
+            variant="primary"
+            onClick={() => {
+              this.props.viewUser(this.props.user.id);
+            }}
+          >
+            <PageviewIcon />
           </Button>
         </td>
       </tr>
