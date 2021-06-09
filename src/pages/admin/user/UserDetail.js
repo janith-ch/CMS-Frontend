@@ -49,7 +49,7 @@ class UserDetail extends Component {
         <body>
           {" "}
           <div className="padding">
-            <div className="row container d-flex justify-content-center">
+            <div className="row container d-flex ">
               <div className="col-xl-12 col-md-12">
                 <div className="card user-card-full">
                   <div className="row m-l-0 m-r-0">
@@ -63,31 +63,55 @@ class UserDetail extends Component {
                             alt="User-Profile-Image"
                           ></img>{" "}
                         </div>
-                        <h6 className="f-w-600">
+                        <h3 className="f-w-600">
                           {this.state.firstName} {this.state.lastName}
-                        </h6>
-                        <p>{this.state.userRole}</p>{" "}
+                        </h3>
+                        <h4>{this.state.userRole}</h4>{" "}
                         <i className=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
                       </div>
                     </div>
                     <div className="col-sm-12">
                       <div className="card-block">
-                        <h6 className="m-b-20 p-b-5 b-b-default f-w-600">
+                        <h3 className="m-b-20 p-b-5 b-b-default f-w-600">
                           USER PROFILE
-                        </h6>
+                        </h3>
+                        <div className="row">
+                          <div className="col-sm-12">
+                            <p className="m-b-10 f-w-600">First Name</p>
+                            <h4 className="text-muted f-w-400">
+                              {this.state.firstName}
+                            </h4>
+                          </div>
+                        </div>
+                        <div className="row">
+                          <div className="col-sm-12">
+                            <p className="m-b-10 f-w-600">Last Name</p>
+                            <h4 className="text-muted f-w-400">
+                              {this.state.lastName}
+                            </h4>
+                          </div>
+                        </div>
                         <div className="row">
                           <div className="col-sm-12">
                             <p className="m-b-10 f-w-600">Email</p>
-                            <h6 className="text-muted f-w-400">
+                            <h4 className="text-muted f-w-400">
                               {this.state.email}
-                            </h6>
+                            </h4>
+                          </div>
+                          <div className="row">
+                            <div className="col-sm-12">
+                              <p className="m-b-10 f-w-600">User Role</p>
+                              <h4 className="text-muted f-w-400">
+                                {this.state.userRole}
+                              </h4>
+                            </div>
                           </div>
                           <div className="row">
                             <div className="col-sm-12">
                               <p className="m-b-10 f-w-600">Country</p>
-                              <h6 className="text-muted f-w-400">
+                              <h4 className="text-muted f-w-400">
                                 {this.state.country}
-                              </h6>
+                              </h4>
                             </div>
                           </div>
                         </div>
