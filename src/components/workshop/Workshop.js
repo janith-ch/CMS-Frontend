@@ -1,31 +1,30 @@
-import React from "react";
-import './Workshop.css';
-import img1 from '../../assets/Images/hero.jpg';
-import { useHistory } from "react-router-dom";
+import React from 'react'
+import product_card from "../../data/product_data";
+import './Workshop.css'
 
+const MainContent = () => {
 
-function Workshop(){
+    console.log(product_card);
+    const listItems = product_card.map((item) =>
 
-    return(
-        <div className="gallery">
-            <div className="content">
-                <img className= 'pro-img' src='' alt = "e"/>
-                <h3>workshop 1</h3>
-                <p>description</p>
-                <h6>date-time</h6>
-                <ul>
-                    <li><i className="fa fa-star" aria-hidden="true"></i></li>
-                    <li><i className="fa fa-star" aria-hidden="true"></i></li>
-                    <li><i className="fa fa-star" aria-hidden="true"></i></li>
-                    <li><i className="fa fa-star" aria-hidden="true"></i></li>
-                    <li><i className="fa fa-star" aria-hidden="true"></i></li>
-                </ul>
-                <button price={20} name={'dddd'} className="buy-1" >reserve ticket</button>
+        <div className="card" key={item.id}>
+            <div className="card_img">
+                <img src={item.thumb} />
             </div>
-
+            <div className="card_header">
+               <div className='wn'><h1>{item.product_name}</h1></div>
+                <div className='wd'><p>{item.description}</p></div>
+                <p className="price">{item.price}<span>{item.currency}</span></p>
+                <div className="btn">More Details</div>
+            </div>
         </div>
 
-    )
+    );
+    return (
 
+        <div className="main_content">
+            {listItems}
+        </div>
+    )
 }
-export default Workshop;
+export default MainContent;
