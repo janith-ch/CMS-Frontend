@@ -1,3 +1,6 @@
+/** @format */
+
+import { Image } from "react-bootstrap";
 import React, { Component } from "react";
 import { getSingleUser } from "../../../service/User";
 
@@ -57,11 +60,11 @@ class UserDetail extends Component {
                       <div className="card-block text-center text-white">
                         <div className="m-b-25">
                           {" "}
-                          <image
+                          <Image
                             src="https://img.icons8.com/bubbles/100/000000/user.png"
                             className="img-radius"
-                             alt="User-Profile-Image"
-                          ></image>{" "}
+                            alt="User-Profile-Image"
+                          ></Image>{" "}
                         </div>
                         <h3 className="f-w-600">
                           {this.state.firstName} {this.state.lastName}
