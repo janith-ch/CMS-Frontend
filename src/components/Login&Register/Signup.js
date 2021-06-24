@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './Signup.css'
-import { DropdownButton,Dropdown} from 'react-bootstrap';
+
 
 
 function Signup() {
@@ -34,9 +34,9 @@ function Signup() {
                     <form className='dev-form' action="#">
                         <h1>Create Account</h1>
                         <div className="social-container">
-                            <a href="#" className="social"><i className="fab fa-facebook-f"/></a>
-                            <a href="#" className="social"><i className="fab fa-google-plus-g"/></a>
-                            <a href="#" className="social"><i className="fab fa-linkedin-in"/></a>
+                            <a href="#link" className="social"><i className="fab fa-facebook-f"/></a>
+                            <a href="#link" className="social"><i className="fab fa-google-plus-g"/></a>
+                            <a href="#link" className="social"><i className="fab fa-linkedin-in"/></a>
                         </div>
                         <span>or use your email for registration</span>
                         <input type="text" placeholder="Name"/>
@@ -82,14 +82,14 @@ function Signup() {
                     <form className='dev-form' action="#">
                         <h1>Sign in</h1>
                         <div className="social-container">
-                            <a href="#" className="social"><i className="fab fa-facebook-f"/></a>
-                            <a href="#" className="social"><i className="fab fa-google-plus-g"/></a>
-                            <a href="#" className="social"><i className="fab fa-linkedin-in"/></a>
+                            <a href="#link" className="social"><i className="fab fa-facebook-f"/></a>
+                            <a href="#link" className="social"><i className="fab fa-google-plus-g"/></a>
+                            <a href="#link" className="social"><i className="fab fa-linkedin-in"/></a>
                         </div>
                         <span>or use your account</span>
                         <input type="email" placeholder="Email"/>
                         <input type="password" placeholder="Password"/>
-                        <a href="#">Forgot your password?</a>
+                        <a href="#link">Forgot your password?</a>
                         <button>Sign In</button>
                     </form>
                 </div>

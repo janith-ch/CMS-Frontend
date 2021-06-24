@@ -2,7 +2,7 @@
 
 import { Link } from "react-router-dom";
 
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { useHistory } from "react-router-dom";
 
 import "./Navbar.css";
@@ -18,7 +18,7 @@ function Navbar() {
     let path = '../Login';
     history.push(path);
   }
-  const [button, setButton] = useState(true);
+  // const [button, setButton] = useState(true);
 
   return (
     <>
