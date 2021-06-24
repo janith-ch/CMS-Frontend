@@ -121,13 +121,13 @@ class UserList extends Component {
       return (
         <div>
           <Row>
-            <Col md="4"></Col>
+            <Col md="5"></Col>
             <Col md="6">
               <h3>
                 <b>USERS LIST</b>
               </h3>
             </Col>
-            <Col md="2">
+            <Col md="1">
               <Button
                 variant="primary"
                 onClick={() => {
