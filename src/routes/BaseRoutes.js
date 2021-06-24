@@ -8,16 +8,15 @@ import EditUser from "../pages/admin/user/EditUser";
 import UserList from "../pages/admin/user/UserList";
 import UserDetail from "../pages/admin/user/UserDetail";
 import ReviewerList from "../pages/admin/reviewer/ReviewerList";
-import Admin from "../pages/admin/Admin";
 import Home from "../pages/home/Home";
 import CreateReviewer from "../pages/admin/reviewer/CreateReviewer";
 import EditReviewer from "../pages/admin/reviewer/EditReviewer";
 import PendingUsers from "../pages/admin/pending users/PendingUsers";
 import HomeDashboard from "../pages/home/dashboard/HomeDashboard";
-
 import CreateSuperUser from "../pages/admin/super users/CreateSuperUser";
 import EditSuperUser from "../pages/admin/super users/EditSuperUser";
 import SuperUserList from "../pages/admin/super users/SuperUserList";
+import MiniDrawer from "../components/admin/navbar/Drawer";
 import Login from "../pages/Login&Register/Login";
 
 const BaseRoutes = () => {
@@ -39,7 +38,7 @@ const BaseRoutes = () => {
         <Route
           path="/admin"
           render={({ match: { url } }) => (
-            <Admin>
+            <MiniDrawer>
               <Route path={url} component={Dashboard} exact />
               <Route path={`${url}/dashboard`} component={Dashboard} />
               <Route
@@ -81,7 +80,15 @@ const BaseRoutes = () => {
                   </div>
                 )}
               />
-            </Admin>
+              <Route
+                path={`${url}/drawer`}
+                render={({ match: { url } }) => (
+                  <div>
+                    <Route path={url} component={MiniDrawer} exact />
+                  </div>
+                )}
+              />
+            </MiniDrawer>
           )}
         />
       </Switch>
