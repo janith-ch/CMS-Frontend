@@ -17,12 +17,14 @@ import CreateSuperUser from "../pages/admin/super users/CreateSuperUser";
 import EditSuperUser from "../pages/admin/super users/EditSuperUser";
 import SuperUserList from "../pages/admin/super users/SuperUserList";
 import MiniDrawer from "../components/admin/navbar/Drawer";
+import Login from "../pages/Login&Register/Login";
 
 const BaseRoutes = () => {
   //const paths = RoutePaths;
   return (
     <>
       <Switch>
+          <Route path='/Login' exact component={Login} />
         <Route
           path="/home"
           render={({ match: { url } }) => (

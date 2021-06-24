@@ -1,7 +1,9 @@
 /** @format */
 
-import React, { useState } from "react";
 import { Link } from "react-router-dom";
+
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
 import "./Navbar.css";
 import { Button } from "react-bootstrap";
@@ -10,6 +12,13 @@ function Navbar() {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
+  const history = useHistory();
+
+  const routeChange = () => {
+    let path = '../Login';
+    history.push(path);
+  }
+  const [button, setButton] = useState(true);
 
   return (
     <>
@@ -51,7 +60,7 @@ function Navbar() {
               </Link>
             </li>
           </ul>
-          <Button variant="warning">Sign Up</Button>{" "}
+          <Button variant="warning" onClick={routeChange} >Sign Up</Button>{" "}
         </div>
       </nav>
     </>
