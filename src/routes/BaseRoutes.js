@@ -18,13 +18,17 @@ import EditSuperUser from "../pages/admin/super users/EditSuperUser";
 import SuperUserList from "../pages/admin/super users/SuperUserList";
 import MiniDrawer from "../components/admin/navbar/Drawer";
 import Login from "../pages/Login&Register/Login";
+import Workshop from "../pages/workshops/workshop";
+
 
 const BaseRoutes = () => {
   //const paths = RoutePaths;
   return (
     <>
       <Switch>
-          <Route path='/Login' exact component={Login} />
+          <Route path='/login' exact component={Login} />
+
+          <Route path='/workshop' exact component={Workshop} />
         <Route
           path="/home"
           render={({ match: { url } }) => (

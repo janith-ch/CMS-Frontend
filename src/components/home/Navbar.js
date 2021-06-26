@@ -15,7 +15,7 @@ function Navbar() {
   const history = useHistory();
 
   const routeChange = () => {
-    let path = '../Login';
+    let path = '../login';
     history.push(path);
   }
   // const [button, setButton] = useState(true);
@@ -43,7 +43,7 @@ function Navbar() {
             </li>
             <li className="dev-nav-item">
               <Link
-                to="/Login"
+                to="/login"
                 className="dev-nav-links"
                 onClick={closeMobileMenu}
               >
@@ -52,7 +52,7 @@ function Navbar() {
             </li>
             <li className="dev-nav-item">
               <Link
-                to="/aboutus"
+                to="/workshop"
                 className="dev-nav-links"
                 onClick={closeMobileMenu}
               >
