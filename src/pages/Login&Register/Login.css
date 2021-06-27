@@ -3,8 +3,6 @@
 .hero-containers {
   background: url("/src/assets/Images/signup.jpeg") center center/cover
     no-repeat;
-  height: 100vh;
-  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -62,11 +60,12 @@
   background-color: #ffffff;
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
   padding: 0 50px;
   height: 100%;
+  overflow-y: scroll;
   text-align: center;
+  flex-wrap: nowrap;
 }
 
 .input-dev {
@@ -240,7 +239,6 @@ select::-ms-expand {
   height: 3em;
   line-height: 3;
   background: #000000;
-  overflow: hidden;
   border-radius: 0.25em;
 }
 select {
