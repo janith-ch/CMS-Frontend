@@ -52,6 +52,7 @@ class UserList extends Component {
           user={currentUser}
           deleteAlert={this.deleteAlert}
           editUser={this.editUser}
+          viewUser={this.viewUser}
           key={currentUser.id}
         />
       );
@@ -62,6 +63,10 @@ class UserList extends Component {
   }
   editUser = (id) => {
     this.props.history.push("/admin/user-list/edit/" + id);
+  };
+
+  viewUser = (id) => {
+    this.props.history.push("/admin/user-list/detail/" + id);
   };
 
   deleteAlert = (id) => {
@@ -116,13 +121,13 @@ class UserList extends Component {
       return (
         <div>
           <Row>
-            <Col md="4"></Col>
+            <Col md="5"></Col>
             <Col md="6">
               <h3>
                 <b>USERS LIST</b>
               </h3>
             </Col>
-            <Col md="2">
+            <Col md="1">
               <Button
                 variant="primary"
                 onClick={() => {

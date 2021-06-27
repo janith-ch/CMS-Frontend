@@ -6,17 +6,19 @@ import Dashboard from "../pages/admin/dashboard/Dashboard";
 import CreateUser from "../pages/admin/user/CreateUser";
 import EditUser from "../pages/admin/user/EditUser";
 import UserList from "../pages/admin/user/UserList";
+import UserDetail from "../pages/admin/user/UserDetail";
 import ReviewerList from "../pages/admin/reviewer/ReviewerList";
-import Admin from "../pages/admin/Admin";
 import Home from "../pages/home/Home";
 import CreateReviewer from "../pages/admin/reviewer/CreateReviewer";
 import EditReviewer from "../pages/admin/reviewer/EditReviewer";
 import PendingUsers from "../pages/admin/pending users/PendingUsers";
 import HomeDashboard from "../pages/home/dashboard/HomeDashboard";
-
 import CreateSuperUser from "../pages/admin/super users/CreateSuperUser";
 import EditSuperUser from "../pages/admin/super users/EditSuperUser";
 import SuperUserList from "../pages/admin/super users/SuperUserList";
+import MiniDrawer from "../components/admin/navbar/Drawer";
+import Login from "../pages/Login&Register/Login";
+import ViewConference from "../pages/home/conference/ViewConferance";
 
 const BaseRoutes = () => {
   //const paths = RoutePaths;
@@ -29,6 +31,8 @@ const BaseRoutes = () => {
             <Home>
               <Route path={url} component={HomeDashboard} exact />
               <Route path={`${url}/dashboard`} component={HomeDashboard} />
+              <Route path={`${url}/login`} component={Login} />
+              <Route path={`${url}/conference`} component={ViewConference} />
             </Home>
           )}
         />
@@ -36,7 +40,7 @@ const BaseRoutes = () => {
         <Route
           path="/admin"
           render={({ match: { url } }) => (
-            <Admin>
+            <MiniDrawer>
               <Route path={url} component={Dashboard} exact />
               <Route path={`${url}/dashboard`} component={Dashboard} />
               <Route
@@ -46,6 +50,7 @@ const BaseRoutes = () => {
                     <Route path={url} component={UserList} exact />
                     <Route path={`${url}/create`} component={CreateUser} />
                     <Route path={`${url}/edit/:id`} component={EditUser} />
+                    <Route path={`${url}/detail/:id`} component={UserDetail} />
                   </div>
                 )}
               />
@@ -77,7 +82,15 @@ const BaseRoutes = () => {
                   </div>
                 )}
               />
-            </Admin>
+              <Route
+                path={`${url}/drawer`}
+                render={({ match: { url } }) => (
+                  <div>
+                    <Route path={url} component={MiniDrawer} exact />
+                  </div>
+                )}
+              />
+            </MiniDrawer>
           )}
         />
       </Switch>
