@@ -2,18 +2,24 @@
 
 import React, { Component } from "react";
 import "./Login.css";
+import { addUser } from "../../service/User";
+import Swal from "sweetalert2";
 
 class Login extends Component {
   state = {
-    first_name: "",
+    firstName: "",
     email: "",
+    lastName: "",
     type: "1",
     selectedFile: null,
     password: "",
     country: "",
+    workshopName: "",
+    workshopDescription: "",
   };
 
   inputsHandler = (e) => {
+    console.log(e.target.value);
     this.setState({
       type: e.target.value,
     });
@@ -25,14 +31,206 @@ class Login extends Component {
     });
   };
 
+  onChangeFirstName = (e) => {
+    this.setState({
+      firstName: e.target.value,
+    });
+  };
+  onChangeLastName = (e) => {
+    this.setState({
+      lastName: e.target.value,
+    });
+  };
+  onChangeEmail = (e) => {
+    this.setState({
+      email: e.target.value,
+    });
+  };
+  onChangePassword = (e) => {
+    this.setState({
+      password: e.target.value,
+    });
+  };
+  onChangeCountry = (e) => {
+    this.setState({
+      country: e.target.value,
+    });
+  };
+
+  onChangeWorkshopTitle = (e) => {
+    this.setState({
+      workshopName: e.target.value,
+    });
+  };
+
+  onChangeWorkshopDescription = (e) => {
+    this.setState({
+      workshopDescription: e.target.value,
+    });
+  };
+
   add = () => {
     const container = document.getElementById("container");
     container.classList.add("right-panel-active");
+    // this.onSubmit();
   };
 
   remove = () => {
     const container = document.getElementById("container");
     container.classList.remove("right-panel-active");
+  };
+
+  onSubmit = async (e) => {
+    // e.preventDefault();
+
+    if (this.state.type === "1") {
+      console.log("working");
+      const user = {
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        email: this.state.email,
+        userRole: "Attendee",
+        password: this.state.password,
+        country: this.state.country,
+      };
+      try {
+        const swalWithBootstrapButtons = Swal.mixin({
+          customClass: {
+            confirmButton: "btn btn-success m-2",
+            cancelButton: "btn btn-danger m-2",
+          },
+          buttonsStyling: false,
+        });
+
+        swalWithBootstrapButtons
+          .fire({
+            title: "Are you sure?",
+            text: "Do you want to Add this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, Add it!",
+            cancelButtonText: "No, Cancel!",
+            reverseButtons: true,
+          })
+          .then((result) => {
+            if (result.isConfirmed) {
+              addUser(user);
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+              swalWithBootstrapButtons.fire(
+                "Cancelled",
+                "User not Add :)",
+                "error"
+              );
+            }
+          });
+      } catch (ex) {
+        // error handling
+        console.log(e);
+      }
+    }
+
+    if (this.state.type === "2") {
+      console.log("working");
+      const user = {
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        email: this.state.email,
+        userRole: "Attendee",
+        password: this.state.password,
+        country: this.state.country,
+        filename: this.state.selectedFile,
+      };
+      try {
+        const swalWithBootstrapButtons = Swal.mixin({
+          customClass: {
+            confirmButton: "btn btn-success m-2",
+            cancelButton: "btn btn-danger m-2",
+          },
+          buttonsStyling: false,
+        });
+
+        swalWithBootstrapButtons
+          .fire({
+            title: "Are you sure?",
+            text: "Do you want to Add this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, Add it!",
+            cancelButtonText: "No, Cancel!",
+            reverseButtons: true,
+          })
+          .then((result) => {
+            if (result.isConfirmed) {
+              addUser(user);
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+              swalWithBootstrapButtons.fire(
+                "Cancelled",
+                "User not Add :)",
+                "error"
+              );
+            }
+          });
+      } catch (ex) {
+        // error handling
+        console.log(e);
+      }
+    }
+
+    if (this.state.type === "3") {
+      console.log("working");
+      const user = {
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        email: this.state.email,
+        userRole: "Attendee",
+        password: this.state.password,
+        country: this.state.country,
+        filename: this.state.selectedFile,
+        workshopName: this.state.workshopName,
+        workshopDescription: this.state.workshopDescription,
+      };
+      try {
+        const swalWithBootstrapButtons = Swal.mixin({
+          customClass: {
+            confirmButton: "btn btn-success m-2",
+            cancelButton: "btn btn-danger m-2",
+          },
+          buttonsStyling: false,
+        });
+
+        swalWithBootstrapButtons
+          .fire({
+            title: "Are you sure?",
+            text: "Do you want to Add this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, Add it!",
+            cancelButtonText: "No, Cancel!",
+            reverseButtons: true,
+          })
+          .then((result) => {
+            if (result.isConfirmed) {
+              addUser(user);
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+              swalWithBootstrapButtons.fire(
+                "Cancelled",
+                "User not Add :)",
+                "error"
+              );
+            }
+          });
+      } catch (ex) {
+        // error handling
+        console.log(e);
+      }
+    }
+
+    this.setState({ firstName: "" });
+    this.setState({ lastName: "" });
+    this.setState({ email: "" });
+    this.setState({ userRole: "" });
+    this.setState({ password: "" });
+    this.setState({ country: "" });
   };
 
   render() {
@@ -58,22 +256,31 @@ class Login extends Component {
                 className="input-dev"
                 type="text"
                 placeholder="First Name"
+                onChange={this.onChangeFirstName}
               />
               <input
                 className="input-dev"
                 type="text"
                 placeholder="Last Name"
+                onChange={this.onChangeLastName}
               />
-              <input className="input-dev" type="email" placeholder="Email" />
+              <input
+                className="input-dev"
+                type="email"
+                placeholder="Email"
+                onChange={this.onChangeEmail}
+              />
               <input
                 className="input-dev"
                 type="password"
                 placeholder="Password"
+                onChange={this.onChangePassword}
               />
               <input
                 className="input-dev"
                 type="country"
                 placeholder="country"
+                onChange={this.onChangeCountry}
               />
               <br />
 
@@ -117,22 +324,21 @@ class Login extends Component {
                 <input
                   className="input-dev"
                   type="text"
-                  placeholder="Work shop Title"
+                  placeholder="Workshop Title"
+                  onChange={this.onChangeWorkshopTitle}
                 />
                 <input
                   className="input-dev"
                   type="text"
-                  placeholder="Work shop Description"
-                />
-                <input
-                  className="input-dev"
-                  type="text"
-                  placeholder="Work shop date and time"
+                  placeholder="Workshop Description"
+                  onChange={this.onChangeWorkshopDescription}
                 />
               </div>
 
               <br />
-              <button className="button-dev">Sign Up</button>
+              <button className="button-dev" onClick={() => this.onSubmit()}>
+                Sign Up
+              </button>
             </form>
           </div>
           <div className="form-container sign-in-container">

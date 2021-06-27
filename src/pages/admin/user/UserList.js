@@ -124,17 +124,18 @@ class UserList extends Component {
             <Col md="5"></Col>
             <Col md="6">
               <h3>
-                <b>USERS LIST</b>
+                <b>ATTENDEE LIST</b>
               </h3>
             </Col>
             <Col md="1">
               <Button
-                variant="primary"
+                className=" btn btn-md"
+                variant="warning"
                 onClick={() => {
                   this.addUser();
                 }}
               >
-                <b>Add User</b>
+                <b>Add Attendee</b>
               </Button>
             </Col>
           </Row>
