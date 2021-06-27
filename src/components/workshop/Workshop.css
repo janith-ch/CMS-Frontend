@@ -22,9 +22,14 @@ nav ul,
 .footer,
 .footer .social,
 .footer .social .fa {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
 }
 .container {
   display: flex;
@@ -56,7 +61,8 @@ nav ul,
 }
 
 .main_content .card {
-  width: 30%;
+  width: 80%;
+  height: 500px;
   border-radius: 15px;
   flex-direction: column;
   position: relative;
@@ -113,7 +119,7 @@ nav ul,
   font-size: 14px;
   border-radius: 35px;
   background-color: #e3c108;
-  color: #fff3cd;
+  color: #0e0d0d;
   cursor: pointer;
   position: relative;
   transition: background-color 0.3s ease;

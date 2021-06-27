@@ -2,6 +2,7 @@
 
 import React from "react";
 import product_card from "../../data/product_data";
+import { Image } from "react-bootstrap";
 import "./Workshop.css";
 
 const MainContent = () => {
@@ -9,7 +10,7 @@ const MainContent = () => {
   const listItems = product_card.map((item) => (
     <div className="card" key={item.id}>
       <div className="card_img">
-        <img src={item.thumb} />
+        <Image src={item.thumb} />
       </div>
       <div className="card_header">
         <div className="wn">

@@ -2,7 +2,7 @@
 
 import { Link } from "react-router-dom";
 
-import React, { useState} from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import "./Navbar.css";
@@ -15,9 +15,9 @@ function Navbar() {
   const history = useHistory();
 
   const routeChange = () => {
-    let path = '../login';
+    let path = "../home/login";
     history.push(path);
-  }
+  };
   // const [button, setButton] = useState(true);
 
   return (
@@ -43,24 +43,17 @@ function Navbar() {
             </li>
             <li className="dev-nav-item">
               <Link
-                to="/login"
+                to="/home/conference"
                 className="dev-nav-links"
                 onClick={closeMobileMenu}
               >
-                Keynotes
-              </Link>
-            </li>
-            <li className="dev-nav-item">
-              <Link
-                to="/workshop"
-                className="dev-nav-links"
-                onClick={closeMobileMenu}
-              >
-                Workshops
+                Conferance
               </Link>
             </li>
           </ul>
-          <Button variant="warning" onClick={routeChange} >Sign Up</Button>{" "}
+          <Button variant="warning" onClick={routeChange}>
+            Sign Up
+          </Button>{" "}
         </div>
       </nav>
     </>
