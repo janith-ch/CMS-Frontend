@@ -27,15 +27,15 @@
 }
 
 /* a {
-  color: #333;
-  
-  text-decoration: none;
-} */
+    color: #333;
+    
+    text-decoration: none;
+  } */
 
 .button-dev {
   border-radius: 20px;
-  border: 1px solid #ff4b2b;
-  background-color: #ff4b2b;
+  border: 1px solid #ffab00;
+  background-color: #ffab00;
   color: #ffffff;
   font-size: 12px;
   font-weight: bold;
@@ -43,6 +43,7 @@
   letter-spacing: 1px;
   text-transform: uppercase;
   transition: transform 80ms ease-in;
+  margin-top: 10px;
 }
 .button-dev:active {
   transform: scale(0.95);
@@ -151,9 +152,9 @@
 }
 
 .overlay {
-  background: #ff416c;
-  background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
-  background: linear-gradient(to right, #ff4b2b, #ff416c);
+  background: #000000;
+  background: -webkit-linear-gradient(to right, #000000, #000000);
+  background: linear-gradient(to right, #000000, #000000);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 0;
@@ -255,7 +256,7 @@ select {
   top: 0;
   right: 0;
   padding: 0 1em;
-  background: #ff4b2b;
+  background: #000000;
   cursor: pointer;
   pointer-events: none;
   -webkit-transition: 0.25s all ease;
