@@ -18,7 +18,6 @@ import EditSuperUser from "../pages/admin/super users/EditSuperUser";
 import SuperUserList from "../pages/admin/super users/SuperUserList";
 import MiniDrawer from "../components/admin/navbar/Drawer";
 import Login from "../pages/Login&Register/Login";
-import Workshop from "../pages/workshops/workshop";
 import ViewConference from "../pages/home/conference/ViewConferance";
 
 const BaseRoutes = () => {
@@ -33,7 +32,6 @@ const BaseRoutes = () => {
               <Route path={url} component={HomeDashboard} exact />
               <Route path={`${url}/dashboard`} component={HomeDashboard} />
               <Route path={`${url}/login`} component={Login} />
-              <Route path={`${url}/workshop`} component={Workshop} />
               <Route path={`${url}/conference`} component={ViewConference} />
             </Home>
           )}
