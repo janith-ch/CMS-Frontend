@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { Component } from "react";
 import "./Login.css";
 
@@ -6,6 +8,7 @@ class Login extends Component {
     first_name: "",
     email: "",
     type: "1",
+    selectedFile: null,
     password: "",
     country: "",
   };
@@ -13,6 +16,12 @@ class Login extends Component {
   inputsHandler = (e) => {
     this.setState({
       type: e.target.value,
+    });
+  };
+  onChageFile = (e) => {
+    console.log(e.target.files[0]);
+    this.setState({
+      selectedFile: e.target.files[0],
     });
   };
 
@@ -91,7 +100,12 @@ class Login extends Component {
               >
                 <label className="mr-2">Upload the Research Paper file:</label>
                 <h6 className="h6-dev">*PDF file format only</h6>
-                <input className="input-dev" type="file" name="file" />
+                <input
+                  className="input-dev"
+                  type="file"
+                  name="file"
+                  onChange={this.onChageFile}
+                />
               </div>
               <div
                 className="form-group mt-3"
@@ -100,6 +114,21 @@ class Login extends Component {
                 <label className="mr-2">Upload Your Workshop Proposal:</label>
                 <h6 className="h6-dev">*PDF file format only</h6>
                 <input className="input-dev" type="file" name="file" />
+                <input
+                  className="input-dev"
+                  type="text"
+                  placeholder="Work shop Title"
+                />
+                <input
+                  className="input-dev"
+                  type="text"
+                  placeholder="Work shop Description"
+                />
+                <input
+                  className="input-dev"
+                  type="text"
+                  placeholder="Work shop date and time"
+                />
               </div>
 
               <br />
