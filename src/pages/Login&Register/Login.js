@@ -5,14 +5,18 @@ import "./Login.css";
 import { addUser } from "../../service/User";
 import Swal from "sweetalert2";
 
+import axios, { post } from "axios";
+import { addWorkshop } from "../../service/workshop/workshop";
+
 class Login extends Component {
   state = {
     firstName: "",
     email: "",
     lastName: "",
     type: "1",
-    selectedFile: null,
+    file: null,
     password: "",
+    url: "",
     country: "",
     workshopName: "",
     workshopDescription: "",
@@ -24,13 +28,37 @@ class Login extends Component {
       type: e.target.value,
     });
   };
+  // onChageFile = (e) => {
+  //   console.log(e.target.files[0]);
+  //   this.setState({
+  //     file: e.target.files[0],
+  //   });
+  //   console.log(this.state.selectedFile);
+  //   addPdf(e.target.files[0]);
+  // };
+
   onChageFile = (e) => {
-    console.log(e.target.files[0]);
-    this.setState({
-      selectedFile: e.target.files[0],
+    this.setState({ file: e.target.files[0] });
+    const response = this.fileUpload(e.target.files[0]).then((result) => {
+      console.log(result.data.fileDownloadUri);
+      this.setState({
+        url: result.data.fileDownloadUri,
+      });
     });
   };
 
+  fileUpload(file) {
+    const url = "http://localhost:9090/uploadFile/";
+    const formData = new FormData();
+    formData.append("file", file);
+    const config = {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    };
+
+    return post(url, formData, config);
+  }
   onChangeFirstName = (e) => {
     this.setState({
       firstName: e.target.value,
@@ -79,6 +107,10 @@ class Login extends Component {
     const container = document.getElementById("container");
     container.classList.remove("right-panel-active");
   };
+
+  // submitPdf = async (e) =>{
+
+  // }
 
   onSubmit = async (e) => {
     // e.preventDefault();
@@ -178,17 +210,19 @@ class Login extends Component {
 
     if (this.state.type === "3") {
       console.log("working");
-      const user = {
+      const workshop = {
         firstName: this.state.firstName,
         lastName: this.state.lastName,
-        email: this.state.email,
-        userRole: "Attendee",
         password: this.state.password,
         country: this.state.country,
-        filename: this.state.selectedFile,
-        workshopName: this.state.workshopName,
-        workshopDescription: this.state.workshopDescription,
+        userRole: "Attendee",
+        email: this.state.email,
+        title: this.state.workshopName,
+        description: this.state.workshopDescription,
+        fileUrl: this.state.url,
       };
+
+      console.log(workshop);
       try {
         const swalWithBootstrapButtons = Swal.mixin({
           customClass: {
@@ -210,7 +244,7 @@ class Login extends Component {
           })
           .then((result) => {
             if (result.isConfirmed) {
-              addUser(user);
+              addWorkshop(workshop);
             } else if (result.dismiss === Swal.DismissReason.cancel) {
               swalWithBootstrapButtons.fire(
                 "Cancelled",
@@ -303,7 +337,7 @@ class Login extends Component {
 
               <div
                 className="form-group mt-3"
-                hidden={this.state.type === "1" || this.state.type === "3"}
+                hidden={this.state.type === "2" || this.state.type === "3"}
               >
                 <label className="mr-2">Upload the Research Paper file:</label>
                 <h6 className="h6-dev">*PDF file format only</h6>
@@ -320,7 +354,12 @@ class Login extends Component {
               >
                 <label className="mr-2">Upload Your Workshop Proposal:</label>
                 <h6 className="h6-dev">*PDF file format only</h6>
-                <input className="input-dev" type="file" name="file" />
+                <input
+                  className="input-dev"
+                  type="file"
+                  name="file"
+                  onChange={this.onChageFile}
+                />
                 <input
                   className="input-dev"
                   type="text"
