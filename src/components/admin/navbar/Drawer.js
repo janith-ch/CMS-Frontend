@@ -1,6 +1,4 @@
-
 /** @format */
-
 
 import React from "react";
 import clsx from "clsx";
@@ -24,8 +22,9 @@ import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import AccessibilityIcon from "@material-ui/icons/Accessibility";
 import SupervisedUserCircleIcon from "@material-ui/icons/SupervisedUserCircle";
 import PersonIcon from "@material-ui/icons/Person";
+import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
+import EventIcon from "@material-ui/icons/Event";
 import { Link } from "react-router-dom";
-
 
 const drawerWidth = 240;
 
@@ -157,9 +156,7 @@ export default function MiniDrawer({ children }) {
           <ListItem button key="dashboard">
             <ListItemIcon>
               <Link to="/admin/dashboard">
-
                 <DashboardIcon style={{ color: "#000000" }} />
-
               </Link>
             </ListItemIcon>
             <ListItemText primary="dashboard" />
@@ -167,9 +164,7 @@ export default function MiniDrawer({ children }) {
           <ListItem button key="Users">
             <ListItemIcon>
               <Link to="/admin/user-list">
-
                 <PersonIcon style={{ color: "#000000" }} />
-
               </Link>
             </ListItemIcon>
             <ListItemText primary="Users" />
@@ -177,11 +172,7 @@ export default function MiniDrawer({ children }) {
           <ListItem button key="Super Users">
             <ListItemIcon>
               <Link to="/admin/super-users">
-
-                
-
                 <SupervisorAccountIcon style={{ color: "#000000" }} />
-
               </Link>
             </ListItemIcon>
             <ListItemText primary="Super Users" />
@@ -189,9 +180,7 @@ export default function MiniDrawer({ children }) {
           <ListItem button key="Reviewers">
             <ListItemIcon>
               <Link to="/admin/reviewer-list">
-
                 <SupervisedUserCircleIcon style={{ color: "#000000" }} />
-
               </Link>
             </ListItemIcon>
             <ListItemText primary="Reviewers" />
@@ -199,9 +188,7 @@ export default function MiniDrawer({ children }) {
           <ListItem button key="Pending Users">
             <ListItemIcon>
               <Link to="/admin/pending-users">
-
                 <AccessibilityIcon style={{ color: "#000000" }} />
-
               </Link>
             </ListItemIcon>
             <ListItemText primary="Pending Users" />
@@ -209,7 +196,7 @@ export default function MiniDrawer({ children }) {
           <ListItem button key="Keynotes">
             <ListItemIcon>
               <Link to="/admin/keynotes">
-                <AssignmentIndIcon />
+                <AssignmentIndIcon style={{ color: "#000000" }} />
               </Link>
             </ListItemIcon>
             <ListItemText primary="Keynotes" />
@@ -217,12 +204,11 @@ export default function MiniDrawer({ children }) {
           <ListItem button key="Conference">
             <ListItemIcon>
               <Link to="/admin/conference">
-                <EventIcon />
+                <EventIcon style={{ color: "#000000" }} />
               </Link>
             </ListItemIcon>
             <ListItemText primary="Conference" />
           </ListItem>
-
         </List>
 
         <Divider />

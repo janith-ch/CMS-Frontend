@@ -8,22 +8,19 @@ class ConCard extends Component {
     return (
       <div>
         <Col>
-          <Card style={{ width: "18rem" }}>
+          <Card>
             <Card.Img
               variant="top"
               src="https://img.icons8.com/bubbles/100/000000/user.png"
             />
             <Card.Body>
-              <Card.Title>Card Title</Card.Title>
-              <Card.Text>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </Card.Text>
+              <Card.Title>{this.props.item.product_name}</Card.Title>
+              <Card.Text>{this.props.item.product_name}</Card.Text>
             </Card.Body>
             <ListGroup className="list-group-flush">
-              <ListGroupItem>Cras justo odio</ListGroupItem>
-              <ListGroupItem>Dapibus ac facilisis in</ListGroupItem>
-              <ListGroupItem>Vestibulum at eros</ListGroupItem>
+              <ListGroupItem>{this.props.item.product_name}</ListGroupItem>
+              <ListGroupItem>{this.props.item.product_name}</ListGroupItem>
+              <ListGroupItem>{this.props.item.product_name}</ListGroupItem>
             </ListGroup>
             <Card.Body>
               <Card.Link href="#">Card Link</Card.Link>
