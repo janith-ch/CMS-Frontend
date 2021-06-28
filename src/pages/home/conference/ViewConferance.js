@@ -4,6 +4,7 @@ import React, { Component } from "react";
 import product_card from "../../../data/product_data";
 import { Image } from "react-bootstrap";
 import "./ViewConference.css";
+import Countdown from "react-countdown";
 
 class ViewConference extends Component {
   state = {};
@@ -24,6 +25,9 @@ class ViewConference extends Component {
             {item.price}
             <span>{item.currency}</span>
           </p>
+          <div>
+            <Countdown date={Date.now() + 4000000000} />
+          </div>
           <div className="btn-dev-dev">More Details</div>
         </div>
       </div>

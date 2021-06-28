@@ -19,6 +19,8 @@ import SuperUserList from "../pages/admin/super users/SuperUserList";
 import MiniDrawer from "../components/admin/navbar/Drawer";
 import Login from "../pages/Login&Register/Login";
 import ViewConference from "../pages/home/conference/ViewConferance";
+import AdminViewConference from "../pages/admin/conference/ViewConference";
+import ViewKeynote from "../pages/admin/keynotes/ViewKeynotes";
 
 const BaseRoutes = () => {
   //const paths = RoutePaths;
@@ -83,10 +85,18 @@ const BaseRoutes = () => {
                 )}
               />
               <Route
-                path={`${url}/drawer`}
+                path={`${url}/keynotes`}
                 render={({ match: { url } }) => (
                   <div>
-                    <Route path={url} component={MiniDrawer} exact />
+                    <Route path={url} component={ViewKeynote} exact />
+                  </div>
+                )}
+              />
+              <Route
+                path={`${url}/conference`}
+                render={({ match: { url } }) => (
+                  <div>
+                    <Route path={url} component={AdminViewConference} exact />
                   </div>
                 )}
               />
