@@ -21,6 +21,7 @@ import Login from "../pages/Login&Register/Login";
 import ViewConference from "../pages/home/conference/ViewConferance";
 import AdminViewConference from "../pages/admin/conference/ViewConference";
 import ViewKeynote from "../pages/admin/keynotes/ViewKeynotes";
+import CreateConference from "../pages/admin/conference/CreateConference";
 
 const BaseRoutes = () => {
   //const paths = RoutePaths;
@@ -97,6 +98,7 @@ const BaseRoutes = () => {
                 render={({ match: { url } }) => (
                   <div>
                     <Route path={url} component={AdminViewConference} exact />
+                    <Route path={`${url}/create`} component={CreateConference} />
                   </div>
                 )}
               />
