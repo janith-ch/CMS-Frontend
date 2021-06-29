@@ -34,11 +34,17 @@ class ConCard extends Component {
               <Card.Text>{this.props.item.description}</Card.Text>
             </Card.Body>
             <ListGroup className="list-group-flush">
-              <FormLabel>Date</FormLabel>
+              <FormLabel>
+                <b>Date</b>
+              </FormLabel>
               <ListGroupItem>{this.props.item.date}</ListGroupItem>
-              <FormLabel>Time</FormLabel>
+              <FormLabel>
+                <b>Time</b>
+              </FormLabel>
               <ListGroupItem>{this.props.item.time}</ListGroupItem>
-              <FormLabel>Organizer</FormLabel>
+              <FormLabel>
+                <b>Organizer</b>
+              </FormLabel>
               <ListGroupItem>{this.props.item.organizer}</ListGroupItem>
             </ListGroup>
             <Card.Body>

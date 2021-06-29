@@ -5,7 +5,7 @@ import "./Login.css";
 import { addUser } from "../../service/User";
 import Swal from "sweetalert2";
 
-import axios, { post } from "axios";
+import { post } from "axios";
 import { addWorkshop } from "../../service/workshop/workshop";
 
 class Login extends Component {
@@ -40,6 +40,7 @@ class Login extends Component {
   onChageFile = (e) => {
     this.setState({ file: e.target.files[0] });
     const response = this.fileUpload(e.target.files[0]).then((result) => {
+      console.log(response);
       console.log(result.data.fileDownloadUri);
       this.setState({
         url: result.data.fileDownloadUri,
@@ -337,7 +338,7 @@ class Login extends Component {
 
               <div
                 className="form-group mt-3"
-                hidden={this.state.type === "2" || this.state.type === "3"}
+                hidden={this.state.type === "1" || this.state.type === "3"}
               >
                 <label className="mr-2">Upload the Research Paper file:</label>
                 <h6 className="h6-dev">*PDF file format only</h6>
