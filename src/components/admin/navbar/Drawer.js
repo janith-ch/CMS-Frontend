@@ -22,9 +22,9 @@ import SupervisorAccountIcon from "@material-ui/icons/SupervisorAccount";
 import AccessibilityIcon from "@material-ui/icons/Accessibility";
 import SupervisedUserCircleIcon from "@material-ui/icons/SupervisedUserCircle";
 import PersonIcon from "@material-ui/icons/Person";
-import { Link } from "react-router-dom";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import EventIcon from "@material-ui/icons/Event";
+import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
 
@@ -196,7 +196,7 @@ export default function MiniDrawer({ children }) {
           <ListItem button key="Keynotes">
             <ListItemIcon>
               <Link to="/admin/keynotes">
-                <AssignmentIndIcon />
+                <AssignmentIndIcon style={{ color: "#000000" }} />
               </Link>
             </ListItemIcon>
             <ListItemText primary="Keynotes" />
@@ -204,7 +204,7 @@ export default function MiniDrawer({ children }) {
           <ListItem button key="Conference">
             <ListItemIcon>
               <Link to="/admin/conference">
-                <EventIcon />
+                <EventIcon style={{ color: "#000000" }} />
               </Link>
             </ListItemIcon>
             <ListItemText primary="Conference" />

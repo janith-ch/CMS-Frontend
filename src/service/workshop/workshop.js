@@ -1,3 +1,5 @@
+/** @format */
+
 import { ADD_PDF, ADD_WORKSHOP } from "./endpoints";
 import { Axios } from "../handler/Index";
 
