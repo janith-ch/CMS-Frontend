@@ -2,71 +2,67 @@
 
 import React, { Component } from "react";
 import { Col, Button, Row } from "react-bootstrap";
-import { getUserList, deleteUser } from "../../../service/User";
-import UserBody from "../../../components/admin/user/UserBody";
-import { USERS } from "../UserRole";
+import {
+  getWorkshopList,
+  deleteWorkshop,
+} from "../../../service/workshop/workshop";
 import "../../../../node_modules/datatables.net-dt/css/jquery.dataTables.css";
 import Animation from "../../../components/admin/Animation";
 import Swal from "sweetalert2";
+import WorkshopBody from "../../../components/admin/workshop/WorkshopBody";
 const $ = require("jquery");
 $.DataTable = require("datatables.net");
 
-class UserList extends Component {
+class ViewWorkshop extends Component {
   state = {
-    users: [],
+    workshop: [],
     loading: false,
   };
 
   componentDidMount() {
-    this.fetchUser();
-    console.log("working");
+    this.fetchWorkshop();
   }
 
-  fetchUser = async () => {
+  fetchWorkshop = async () => {
     try {
       this.setState({ loading: true });
-      const response = await getUserList(`${USERS}`);
+      const response = await getWorkshopList();
       console.log(response.data);
-      this.setState({ users: response.data || [] });
+      this.setState({ workshop: response.data.dataBundle || [] });
       this.setState({ loading: false });
     } catch (e) {
       console.log(e);
     }
   };
 
-  removeUser = async (id) => {
-    const response = await deleteUser(id);
+  removeWorkshop = async (id) => {
+    const response = await deleteWorkshop(id);
     console.log(response.data);
     try {
       this.setState({
-        users: this.state.users.filter((el) => el.id !== id),
+        workshop: this.state.workshop.filter((el) => el.id !== id),
       });
     } catch (e) {
       console.log(e);
     }
   };
-  userList() {
-    return this.state.users.map((currentUser) => {
+  workshopList() {
+    return this.state.workshop.map((currentworkshop) => {
       return (
-        <UserBody
-          user={currentUser}
+        <WorkshopBody
+          ws={currentworkshop}
           deleteAlert={this.deleteAlert}
-          editUser={this.editUser}
-          viewUser={this.viewUser}
-          key={currentUser.id}
+          editWorkshop={this.editworkshop}
+          key={currentworkshop.id}
         />
       );
     });
   }
-  addUser() {
-    this.props.history.push("/admin/user-list/create");
+  pendings() {
+    this.props.history.push("/admin/workshop/pending");
   }
-  editUser = (id) => {
-    this.props.history.push("/admin/user-list/edit/" + id);
-  };
-
-  viewUser = (id) => {
-    this.props.history.push("/admin/user-list/detail/" + id);
+  editworkshop = (id) => {
+    this.props.history.push("/admin/workshop/edit/" + id);
   };
 
   deleteAlert = (id) => {
@@ -90,7 +86,7 @@ class UserList extends Component {
       })
       .then((result) => {
         if (result.isConfirmed) {
-          this.removeUser(id);
+          this.removeWorkshop(id);
           swalWithBootstrapButtons.fire(
             "Deleted!",
             "User has been removed.",
@@ -124,7 +120,7 @@ class UserList extends Component {
             <Col md="5"></Col>
             <Col md="6">
               <h3>
-                <b>ATTENDEE LIST</b>
+                <b>WORKSHOPS</b>
               </h3>
             </Col>
             <Col md="1">
@@ -132,10 +128,10 @@ class UserList extends Component {
                 className=" btn btn-md"
                 variant="warning"
                 onClick={() => {
-                  this.addUser();
+                  this.pendings();
                 }}
               >
-                <b>Add Attendee</b>
+                <b>Pendings</b>
               </Button>
             </Col>
           </Row>
@@ -152,18 +148,24 @@ class UserList extends Component {
                 <th>Last Name</th>
                 <th>Email</th>
                 <th>Country</th>
-                <th>User Type</th>
+                <th>Ws Title</th>
+                <th>date</th>
+                <th>Time</th>
+                <th>pdf</th>
                 <th>Action</th>
               </tr>
             </thead>
-            <tbody>{this.userList()}</tbody>
+            <tbody>{this.workshopList()}</tbody>
             <tfoot>
               <tr>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Email</th>
                 <th>Country</th>
-                <th>User Type</th>
+                <th>Ws Title</th>
+                <th>date</th>
+                <th>Time</th>
+                <th>pdf</th>
                 <th>Action</th>
               </tr>
             </tfoot>
@@ -173,4 +175,4 @@ class UserList extends Component {
     }
   }
 }
-export default UserList;
+export default ViewWorkshop;
