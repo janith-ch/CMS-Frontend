@@ -35,7 +35,12 @@ class ViewConference extends Component {
     return this.state.conference.map((item) => {
       return (
         <Col md="4">
-          <ConCard item={item} key={item.id} deleteAlert={this.deleteAlert} />
+          <ConCard
+            item={item}
+            key={item.id}
+            deleteAlert={this.deleteAlert}
+            editConference={this.editConference}
+          />
         </Col>
       );
     });
@@ -94,6 +99,9 @@ class ViewConference extends Component {
   addConference() {
     this.props.history.push("/admin/conference/create");
   }
+  editConference = (id) => {
+    this.props.history.push("/admin/conference/edit/" + id);
+  };
   render() {
     if (this.state.loading === true) {
       return <Animation />;

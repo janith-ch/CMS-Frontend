@@ -25,6 +25,8 @@ import CreateConference from "../pages/admin/conference/CreateConference";
 import ViewWorkshop from "../pages/admin/workshop/ViewWorkshop";
 import PendingWorkshop from "../pages/admin/workshop/PendingWorkshop";
 import Editworkshop from "../pages/admin/workshop/EditWorkshop";
+import EditConference from "../pages/admin/conference/EditConference";
+import CreateKeynotes from "../pages/admin/keynotes/CreateKeynotes";
 
 const BaseRoutes = () => {
   //const paths = RoutePaths;
@@ -93,6 +95,7 @@ const BaseRoutes = () => {
                 render={({ match: { url } }) => (
                   <div>
                     <Route path={url} component={ViewKeynote} exact />
+                    <Route path={`${url}/create`} component={CreateKeynotes} />
                   </div>
                 )}
               />
@@ -104,6 +107,10 @@ const BaseRoutes = () => {
                     <Route
                       path={`${url}/create`}
                       component={CreateConference}
+                    />
+                    <Route
+                      path={`${url}/edit/:id`}
+                      component={EditConference}
                     />
                   </div>
                 )}

@@ -30,7 +30,7 @@ class ConCard extends Component {
           <Card>
             <Card.Img variant="top" src={this.props.item.image} />
             <Card.Body>
-              <Card.Title>{this.props.item.header}</Card.Title>
+              <Card.Title>{this.props.item.heading}</Card.Title>
               <Card.Text>{this.props.item.description}</Card.Text>
             </Card.Body>
             <ListGroup className="list-group-flush">
@@ -54,7 +54,7 @@ class ConCard extends Component {
                     className="m-1 "
                     variant="success"
                     onClick={() => {
-                      //   this.props.editUser(this.props.user.id);
+                      this.props.editConference(this.props.item.id);
                     }}
                   >
                     Update
