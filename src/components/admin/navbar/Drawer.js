@@ -24,6 +24,7 @@ import SupervisedUserCircleIcon from "@material-ui/icons/SupervisedUserCircle";
 import PersonIcon from "@material-ui/icons/Person";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import EventIcon from "@material-ui/icons/Event";
+import EventNoteIcon from "@material-ui/icons/EventNote";
 import { Link } from "react-router-dom";
 
 const drawerWidth = 240;
@@ -208,6 +209,14 @@ export default function MiniDrawer({ children }) {
               </Link>
             </ListItemIcon>
             <ListItemText primary="Conference" />
+          </ListItem>
+          <ListItem button key="workshop">
+            <ListItemIcon>
+              <Link to="/admin/workshop">
+                <EventNoteIcon style={{ color: "#000000" }} />
+              </Link>
+            </ListItemIcon>
+            <ListItemText primary="workshop" />
           </ListItem>
         </List>
 

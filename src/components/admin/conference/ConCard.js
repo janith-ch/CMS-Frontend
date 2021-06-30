@@ -30,15 +30,21 @@ class ConCard extends Component {
           <Card>
             <Card.Img variant="top" src={this.props.item.image} />
             <Card.Body>
-              <Card.Title>{this.props.item.header}</Card.Title>
+              <Card.Title>{this.props.item.heading}</Card.Title>
               <Card.Text>{this.props.item.description}</Card.Text>
             </Card.Body>
             <ListGroup className="list-group-flush">
-              <FormLabel>Date</FormLabel>
+              <FormLabel>
+                <b>Date</b>
+              </FormLabel>
               <ListGroupItem>{this.props.item.date}</ListGroupItem>
-              <FormLabel>Time</FormLabel>
+              <FormLabel>
+                <b>Time</b>
+              </FormLabel>
               <ListGroupItem>{this.props.item.time}</ListGroupItem>
-              <FormLabel>Organizer</FormLabel>
+              <FormLabel>
+                <b>Organizer</b>
+              </FormLabel>
               <ListGroupItem>{this.props.item.organizer}</ListGroupItem>
             </ListGroup>
             <Card.Body>
@@ -48,7 +54,7 @@ class ConCard extends Component {
                     className="m-1 "
                     variant="success"
                     onClick={() => {
-                      //   this.props.editUser(this.props.user.id);
+                      this.props.editConference(this.props.item.id);
                     }}
                   >
                     Update
